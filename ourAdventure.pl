@@ -5,7 +5,9 @@
 
 
 at(portalOne, statek).
-at(poratTwo, caveOne)
+at(poratTwo, caveOne).
+at(portalThree, caveTwo).
+at(sword, mesa)
 
 
 
