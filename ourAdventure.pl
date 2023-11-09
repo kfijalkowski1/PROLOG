@@ -10,7 +10,6 @@ at(portalThree, caveTwo).
 at(sword, mesa)
 
 
-
 % starting point
 i_am_at(laka).
 
@@ -133,8 +132,35 @@ path(tundra, n, jaskinia1).
 path(tundra, e, stepy).
 
 % description
+describe(pustkowie2) :- write(''), nl.
+describe(oceanStatek) :- write(''), nl.
+describe(oceanPusty) :- write(''), nl.
+describe(rafaKoralowa) :- write(''), nl.
+describe(jaskiniaPodwodna) :- write(''), nl.
 
+describe(obozRozbojnikow) :- write(''), nl.
+describe(rzeka) :- write(''), nl.
+describe(kanion) :- write(''), nl.
+describe(lasBrzozowy) :- write(''), nl.
+describe(jaskinia2) :- write(''), nl.
+
+describe(gory) :- write(''), nl.
+describe(jezioro) :- write(''), nl.
 describe(laka) :- write('jestes na pieknej lace'), nl.
+describe(lasDebowy) :- write(''), nl.
+describe(wysokieGory) :- write(''), nl.
+
+describe(jaskinia1) :- write(''), nl.
+describe(tajga) :- write(''), nl.
+describe(wioska) :- write(''), nl.
+describe(dolina) :- write(''), nl.
+describe(zniszczonyPortal) :- write(''), nl.
+
+describe(tundra) :- write(''), nl.
+describe(stepy) :- write(''), nl.
+describe(pustynia) :- write(''), nl.
+describe(mesa) :- write(''), nl.
+describe(pustkowie1) :- write(''), nl.
 
 % zasady przemiszczania sie
 map :-
