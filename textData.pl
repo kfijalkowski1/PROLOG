@@ -151,3 +151,9 @@ instructions :-
         write('halt.              -- aby zatrzymać grę i wyjść.'), nl,
         write('map.               -- aby dowiedzieć się gdzie można iść.'), nl,
         nl.
+
+
+% describe health change
+
+describeHelathChange(laka, 'Zaatakowali cię bandyci! Straciłeś 3 punkty życia').
+describeHelathChange(kanion, 'Znalazłeś medPack-a! Zyskałeś 4 punkty życia').

@@ -1,6 +1,6 @@
 /* Space destroyer, by Kamil Kuba Krzyś */
 
-:- dynamic i_am_at/1, at/2, holding/1, describe/1, go/1, map/0, instructions/0, health/1.
+:- dynamic i_am_at/1, at/2, holding/1, describe/1, go/1, instructions/0, health/1, describeHelathChange/2.
 :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)).
 :- retractall(health(_)) .
 
@@ -19,9 +19,36 @@ map :-
         (path(Place, Y, X)), write(X), write(" w kierunku: "), write(Y), nl , fail.
 map.
 
-myHealth :-
+describeHealth :-
         health(HealthPoints),
-        write("Aktualnie masz: "), write(HealthPoints), write(" punktów życia:"), !, nl.
+        write("Aktualnie masz: "), write(HealthPoints), write(" punktów życia"), !, nl.
+
+
+describeHelathChange :-
+        i_am_at(Place),
+        describeHelathChange(Place, Msg),
+        write(Msg), nl,
+        describeHealth.
+
+
+% podniesienie broni + ataku
+% obóz bandytów
+
+atack :-
+        % sprawdznie akaku aktualnego
+        % atak > wymagane w miescu
+        %       koniec i jestem w miejsu
+        % else
+        %       zabranie hp ile w danym miejscu
+        %       write(uciekłem do)
+        %       teleport(OdwrotnelastDirection)
+
+teleport :-
+        % uciekłem do
+        % go bez heth i opisu
+
+
+checkHealth :-
 
 
 changeHealth :-
@@ -31,7 +58,8 @@ changeHealth :-
         NewHealth is CurrentHealth + HealthChanger,
         retract(health(CurrentHealth)),
         assert(health(NewHealth)),
-        !, myHealth.
+        checkHealth,
+        !, describeHelathChange.
 
 
 
@@ -89,7 +117,9 @@ go(Direction) :-
         path(Here, Direction, There),
         retract(i_am_at(Here)),
         assert(i_am_at(There)),
-        !, look.
+        !, changeHealth, look.
+
+% teleport(Place)
 
 go(_) :-
         write('You can''t go that way.').
@@ -116,22 +146,15 @@ notice_objects_at(Place) :-
 notice_objects_at(_).
 
 
-/* This rule tells how to die. */
-
 die :-
         finish.
+
 
 finish :-
         nl,
         write('The game is over. Please enter the "halt." command.'),
         nl.
 
-
-/* This rule just writes out game instructions. */
-
-
-
-/* This rule prints out instructions and tells where you are. */
 
 start :-
         instructions,
