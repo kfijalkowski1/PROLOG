@@ -1,19 +1,16 @@
 /* Space destroyer, by Kamil Kuba Krzyś */
 
-:- dynamic i_am_at/1, at/2, holding/1, describe/1, go/1, map/0, instructions/0.
+:- dynamic i_am_at/1, at/2, holding/1, describe/1, go/1, map/0, instructions/0, health/1.
 :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)).
+:- retractall(health(_)) .
 
-:- consult('textData.pl').
-:- consult('nonTextData.pl').
-
-
-/* starting point */
 :- consult('textData.pl').
 :- consult('nonTextData.pl').
 
 
 /* starting point */
 i_am_at(laka).
+health(20).
 
 % zasady przemiszczania sie
 map :-
@@ -21,6 +18,21 @@ map :-
         write("Aktualnie jestes w: "), write(Place), write(" możesz iść do:"), nl,
         (path(Place, Y, X)), write(X), write(" w kierunku: "), write(Y), nl , fail.
 map.
+
+myHealth :-
+        health(HealthPoints),
+        write("Aktualnie masz: "), write(HealthPoints), write(" punktów życia:"), !, nl.
+
+
+changeHealth :-
+        i_am_at(Place),
+        health(CurrentHealth),
+        healthChanger(Place, HealthChanger),
+        NewHealth is CurrentHealth + HealthChanger,
+        retract(health(CurrentHealth)),
+        assert(health(NewHealth)),
+        !, myHealth.
+
 
 
 

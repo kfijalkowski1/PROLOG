@@ -119,9 +119,13 @@ path(tundra, n, jaskinia1).
 path(tundra, e, stepy).
 
 
-%layout of objects
+% layout of objects
 
 at(portalOne, statek).
 at(poratTwo, caveOne).
 at(portalThree, caveTwo).
-at(sword, mesa) .
+at(sword, mesa).
+
+% health changers
+healthChanger(laka, -3).
+healthChanger(kanion, 4).
