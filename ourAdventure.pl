@@ -1,8 +1,13 @@
 /* Space destroyer, by Kamil Kuba Krzyś */
 
-:- dynamic i_am_at/1, at/2, holding/1, describe/1, go/1, map/0.
+:- dynamic i_am_at/1, at/2, holding/1, describe/1, go/1, map/0, instructions/0.
 :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)).
 
+:- consult('textData.pl').
+:- consult('nonTextData.pl').
+
+
+/* starting point */
 :- consult('textData.pl').
 :- consult('nonTextData.pl').
 
@@ -112,19 +117,6 @@ finish :-
 
 /* This rule just writes out game instructions. */
 
-instructions :-
-        nl,
-        write('Używaj komend zgodnie z składnią prolog-a.'), nl,
-        write('dostępne komendy:'), nl,
-        write('start.             -- aby rozpocząć grę.'), nl,
-        write('n.  s.  e.  w.     -- aby iść w danym kierunku.'), nl,
-        write('take(Object).      -- aby podnieść obiekt.'), nl,
-        write('drop(Object).      -- aby póścić obiekt.'), nl,
-        write('look.              -- aby się rozejrzeć.'), nl,
-        write('instructions.      -- aby zobaczyć tą wiadomość.'), nl,
-        write('halt.              -- aby zatrzymać grę i wyjść.'), nl,
-        write('map.               -- aby dowiedzieć się gdzie można iść.'), nl,
-        nl.
 
 
 /* This rule prints out instructions and tells where you are. */

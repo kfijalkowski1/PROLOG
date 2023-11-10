@@ -134,3 +134,20 @@ describe(pustkowie1) :-
     write('Nie ma tu żadnej roślinności, a jedynym towarzyszem jest skwarny wiatr unoszący kłęby kurzu w powietrzu.'), nl,
     write('Na horyzoncie widzisz jedynie opustoszałe ruiny, pozostałość po dawnych cywilizacjach, które przepadły w zapomnieniu.'), nl,
     write('Pustkowie emanuje atmosferą opuszczenia, a cisza jest jedynym dźwiękiem, jaki się tu rozchodzi.'), nl.
+
+
+% instructions
+
+instructions :-
+        nl,
+        write('Używaj komend zgodnie z składnią prolog-a.'), nl,
+        write('dostępne komendy:'), nl,
+        write('start.             -- aby rozpocząć grę.'), nl,
+        write('n.  s.  e.  w.     -- aby iść w danym kierunku.'), nl,
+        write('take(Object).      -- aby podnieść obiekt.'), nl,
+        write('drop(Object).      -- aby póścić obiekt.'), nl,
+        write('look.              -- aby się rozejrzeć.'), nl,
+        write('instructions.      -- aby zobaczyć tą wiadomość.'), nl,
+        write('halt.              -- aby zatrzymać grę i wyjść.'), nl,
+        write('map.               -- aby dowiedzieć się gdzie można iść.'), nl,
+        nl.
