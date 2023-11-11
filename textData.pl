@@ -233,7 +233,7 @@ describeHelathChange(chelb, 'Nie ma nic lepszego dla zdrowia niż dobre jedzenie
 
 
 % describe atack change
-describeAtackChange(patyk, 'Dostajesz +3 do ataku za podniesienie drewnianego patyka').
+describeAtackChange(miecz, 'Dostajesz +4 do ataku za podniesienie miecza').
 describeAtackChange(patyk, 'Dostajesz +2 do ataku za podniesienie drewnianego patyka').
 describeAtackChange(kamien, 'Dostajesz +1 do ataku za podniesienie kamienia').
 
