@@ -1,6 +1,6 @@
 /* Space destroyer, by Kamil Kuba Krzyś */
 
-:- dynamic i_am_at/1, at/2, holding/1, describe/1, go/1, instructions/0, health/1, atack/1, describeHelathChange/2, lastDirection/1.
+:- dynamic i_am_at/1, at/2, describe/1, go/1, instructions/0, health/1, atack/1, describeHelathChange/2, lastDirection/1.
 :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)).
 :- retractall(health(_)), retractall(atack(_)) .
 
@@ -12,6 +12,7 @@
 i_am_at(laka).
 health(20).
 atack(0).
+lastDirection(s).
 
 % zasady przemiszczania sie
 map :-
@@ -27,12 +28,13 @@ map.
 
 goBack :-
         lastDirection(Direction),
+        directionOposite(Direction, OposideDirection),
         i_am_at(Here),
-        path(Here, Direction, There),
+        path(Here, OposideDirection, There),
         % change position
         retract(i_am_at(Here)),
         assert(i_am_at(There)),
-        !, write("uciekłeś do"), write(There).
+        !, write("uciekłeś do "), write(There), nl.
 
 
 describeAtack :-
@@ -56,13 +58,35 @@ addAtack(Wepon) :-
 
 
 makeAtack :-
+        % makeWinAtack,
+        % makeFailAtack.
+        atack(CurrentAtack),
+        i_am_at(Here),
+        atackRequierd(Here, AtackRequierd),
+        i_am_at(Here),
+        winAtackMessage(Here, WinMsg),
+        loseAtackMsg(Here, LoseMsg),
+        (CurrentAtack >= AtackRequierd -> write(WinMsg), nl; true),
+        (CurrentAtack < AtackRequierd -> write(LoseMsg), nl, write('aktualna ilość puktów ataku: '), write(CurrentAtack), write(', wymagana ilość: '), write(AtackRequierd), nl, changeHealth, goBack; true).
+
+
+
+makeWinAtack :-
         atack(CurrentAtack),
         i_am_at(Here),
         atackRequierd(Here, AtackRequierd),
         winAtackMessage(Here, WinMsg),
+        (CurrentAtack >= AtackRequierd -> write(WinMsg), fail).
+makeWinAtack.
+
+
+makeFailAtack:-
+        atack(CurrentAtack),
+        i_am_at(Here),
+        atackRequierd(Here, AtackRequierd),
         loseAtackMsg(Here, LoseMsg),
-        (CurrentAtack >= AtackRequierd -> write(WinMsg)),
-        (CurrentAtack < AtackRequierd -> write(LoseMsg), goBack).
+        (CurrentAtack < AtackRequierd -> write(LoseMsg), changeHealth, goBack, fail).
+makeFailAtack.
 
 
 % Zasady związane z punktami życia
@@ -94,38 +118,37 @@ changeHealth :-
 
 /* These rules describe how to pick up an object. */
 
-take(X) :-
-        holding(X),
-        write('You''re already holding it!'),
-        !, nl.
+% take(X) :-
+%         holding(X),
+%         write('Już to posiadasz'),
+%         !, nl.
 
 take(X) :-
         i_am_at(Place),
         at(X, Place),
         retract(at(X, Place)),
-        assert(holding(X)),
+        % assert(holding(X)),
         addAtack(X),
-        write('OK.'),
         !, nl.
 
 take(_) :-
-        write('I don''t see it here.'),
+        write('Nie widzę tego tutaj.'),
         nl.
 
 
 /* These rules describe how to put down an object. */
 
-drop(X) :-
-        holding(X),
-        i_am_at(Place),
-        retract(holding(X)),
-        assert(at(X, Place)),
-        write('OK.'),
-        !, nl.
+% drop(X) :-
+%         holding(X),
+%         i_am_at(Place),
+%         retract(holding(X)),
+%         assert(at(X, Place)),
+%         write('OK.'),
+%         !, nl.
 
-drop(_) :-
-        write('You aren''t holding it!'),
-        nl.
+% drop(_) :-
+%         write('You aren''t holding it!'),
+%         nl.
 
 
 /* These rules define the direction letters as calls to go/1. */
@@ -142,14 +165,13 @@ w :- go(w).
 go(Direction) :-
         i_am_at(Here),
         path(Here, Direction, There),
-        fail,
         % change position
         retract(i_am_at(Here)),
         assert(i_am_at(There)),
         % set last move
         retract(lastDirection(_)),
         assert(lastDirection(Direction)),
-        !, changeHealth, look.
+        !, makeAtack, look.
 
 % teleport(Place)
 
@@ -172,7 +194,7 @@ look :-
 
 notice_objects_at(Place) :-
         at(X, Place),
-        write('There is a '), write(X), write(' here.'), nl,
+        write('Jest tu '), write(X), nl,
         fail.
 
 notice_objects_at(_).
