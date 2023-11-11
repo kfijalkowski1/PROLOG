@@ -129,3 +129,10 @@ at(sword, mesa).
 % health changers
 healthChanger(laka, -3).
 healthChanger(kanion, 4).
+
+
+% directions reverse
+directionOposite(n, s).
+directionOposite(s, n).
+directionOposite(w, e).
+directionOposite(e, w).
