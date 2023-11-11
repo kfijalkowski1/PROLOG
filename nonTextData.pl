@@ -125,7 +125,22 @@ at(portalOne, statek).
 at(poratTwo, caveOne).
 at(portalThree, caveTwo).
 at(sword, mesa).
+at(laka, patyk).
 
 % health changers
 healthChanger(laka, -3).
 healthChanger(kanion, 4).
+
+
+% directions reverse
+directionOposite(n, s).
+directionOposite(s, n).
+directionOposite(w, e).
+directionOposite(e, w).
+
+
+% atack values of objects
+atackChanger(patyk, 3).
+
+atackRequierd(laka, 0).
+atackRequierd(kanion, 0).

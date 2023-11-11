@@ -1,3 +1,6 @@
+:- discontiguous describe/1.
+:- discontiguous search/1.
+
 % description
 describe(pustkowie2) :-
     write('Wędrujesz przez pustkowie, gdzie krajobraz jest surowy, a ziemia spękana od przesuszenia.'), nl,
@@ -307,3 +310,12 @@ instructions :-
 
 describeHelathChange(laka, 'Zaatakowali cię bandyci! Straciłeś 3 punkty życia').
 describeHelathChange(kanion, 'Znalazłeś medPack-a! Zyskałeś 4 punkty życia').
+
+% describe atack change
+describeAtackChange(patyk, 'Dostajesz +3 do ataku za podniesienie drewnianego patyka').
+
+% decsribe lose atack
+loseAtackMsg(laka, '').
+
+% describe win atack
+winAtackMessage(laka, '').

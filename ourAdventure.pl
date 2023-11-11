@@ -1,8 +1,8 @@
 /* Space destroyer, by Kamil Kuba Krzyś */
 
-:- dynamic i_am_at/1, at/2, holding/1, describe/1, go/1, instructions/0, health/1, describeHelathChange/2.
+:- dynamic i_am_at/1, at/2, holding/1, describe/1, go/1, instructions/0, health/1, atack/1, describeHelathChange/2, lastDirection/1.
 :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)).
-:- retractall(health(_)) .
+:- retractall(health(_)), retractall(atack(_)) .
 
 :- consult('textData.pl').
 :- consult('nonTextData.pl').
@@ -11,6 +11,7 @@
 /* starting point */
 i_am_at(laka).
 health(20).
+atack(0).
 
 % zasady przemiszczania sie
 map :-
@@ -19,10 +20,56 @@ map :-
         (path(Place, Y, X)), write(X), write(" w kierunku: "), write(Y), nl , fail.
 map.
 
+
+% podniesienie broni + ataku
+% obóz bandytów
+
+
+goBack :-
+        lastDirection(Direction),
+        i_am_at(Here),
+        path(Here, Direction, There),
+        % change position
+        retract(i_am_at(Here)),
+        assert(i_am_at(There)),
+        !, write("uciekłeś do"), write(There).
+
+
+describeAtack :-
+        atack(AtackPoints),
+        write("Aktualnie masz: "), write(AtackPoints), write(" punktów ataku"), !, nl.
+
+
+describeAtackChange(Wepon) :-
+        describeAtackChange(Wepon, Msg),
+        write(Msg), nl,
+        describeAtack.
+
+
+addAtack(Wepon) :-
+        atack(CurrentAtack),
+        atackChanger(Wepon, AtackChange),
+        NewAtack is CurrentAtack + AtackChange,
+        retract(atack(_)),
+        assert(atack(NewAtack)),
+        !, describeAtackChange(Wepon).
+
+
+makeAtack :-
+        atack(CurrentAtack),
+        i_am_at(Here),
+        atackRequierd(Here, AtackRequierd),
+        winAtackMessage(Here, WinMsg),
+        loseAtackMsg(Here, LoseMsg),
+        (CurrentAtack >= AtackRequierd -> write(WinMsg)),
+        (CurrentAtack < AtackRequierd -> write(LoseMsg), goBack).
+
+
+% Zasady związane z punktami życia
+
 describeHealth :-
         health(HealthPoints),
         write("Aktualnie masz: "), write(HealthPoints), write(" punktów życia"), !, nl.
-
 
 describeHelathChange :-
         i_am_at(Place),
@@ -30,26 +77,9 @@ describeHelathChange :-
         write(Msg), nl,
         describeHealth.
 
-
-% podniesienie broni + ataku
-% obóz bandytów
-
-atack :-
-        % sprawdznie akaku aktualnego
-        % atak > wymagane w miescu
-        %       koniec i jestem w miejsu
-        % else
-        %       zabranie hp ile w danym miejscu
-        %       write(uciekłem do)
-        %       teleport(OdwrotnelastDirection)
-
-teleport :-
-        % uciekłem do
-        % go bez heth i opisu
-
-
 checkHealth :-
-
+        health(HealthPoints),
+        (HealthPoints < 1 -> write("Umierasz, skończyly ci się punkty życia"), die; true).
 
 changeHealth :-
         i_am_at(Place),
@@ -60,8 +90,6 @@ changeHealth :-
         assert(health(NewHealth)),
         checkHealth,
         !, describeHelathChange.
-
-
 
 
 /* These rules describe how to pick up an object. */
@@ -76,6 +104,7 @@ take(X) :-
         at(X, Place),
         retract(at(X, Place)),
         assert(holding(X)),
+        addAtack(X),
         write('OK.'),
         !, nl.
 
@@ -110,13 +139,16 @@ s :- go(s).
 w :- go(w).
 
 
-/* This rule tells how to move in a given direction. */
-
 go(Direction) :-
         i_am_at(Here),
         path(Here, Direction, There),
+        fail,
+        % change position
         retract(i_am_at(Here)),
         assert(i_am_at(There)),
+        % set last move
+        retract(lastDirection(_)),
+        assert(lastDirection(Direction)),
         !, changeHealth, look.
 
 % teleport(Place)
@@ -148,6 +180,12 @@ notice_objects_at(_).
 
 die :-
         finish.
+
+
+stats :-
+        describeAtack,
+        describeHealth,
+        map.
 
 
 finish :-
