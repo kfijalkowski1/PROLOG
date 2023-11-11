@@ -19,11 +19,11 @@ describe(oceanStatek) :-
     write('Wokół unoszą się ryby, a w szczelinach wraku odkrywasz tajemnice, które przetrwały upadek tego statku.'), nl,
     write('Czujesz nutę tajemnicy, gdy zbliżasz się do zatopionego wraku, a woda rozchodzi się wokół ciebie jak cicha opowieść o przeszłości.'), nl.
 
-% Opis odkrytej części portalu 1/3, złotej bransoletki +2 życia
+% Opis odkrytej części portalu 1/3, złotej bransolety +2 życia
 search(oceanStatek) :-
     write('Rozglądasz się wokół wraku i odkrywasz część portalu, która zdaje się być fragmentem starożytnego artefaktu.'), nl,
     write('Część portalu jest wykonana z nieznanego metalu i emanuje słabym światłem, sugerując swoją magiczną naturę.'), nl,
-    write('Podczas przeszukiwania wnętrza wraku znajdujesz piękną złotą bransoletkę zdobioną misternymi wzorami.'), nl,
+    write('Podczas przeszukiwania wnętrza wraku znajdujesz piękną złotą bransoletę zdobioną misternymi wzorami.'), nl,
     write('To wyjątkowy przedmiot, który zdaje się być starożytnym skarbem utraconym w czasie zatopienia statku.'), nl.
 
 describe(oceanPusty) :-
@@ -41,7 +41,7 @@ describe(rafaKoralowa) :-
     write('Na dnie rafy dostrzegasz ukryte jaskinie i groty, które stanowią schronienie dla różnorodnych morskich istot.'), nl,
     write('Dźwięki wody i śpiewu morskich istot wypełniają przestrzeń, nadając temu miejscu magii i niepowtarzalnego piękna.'), nl.
 
-% Opis odkrytej skrzynki po podenisieniu zanjduejsz w niej zbroje hp +3
+% Opis odkrytej skrzynki po podenisieniu zanjduejsz w niej naramiennik hp +3
 search(rafaKoralowa) :-
     write('Podczas nurkowania w rafie koralowej dostrzegasz starą skrzynkę, która leży między koralami.'), nl,
     write('Skrzynka zdaje się być starożytna i pokryta kolorowymi morskimi roślinami, co czyni ją trudno dostrzegalną.'), nl.
@@ -80,6 +80,7 @@ search(rzeka) :-
     write('Jedynym ruchem na horyzoncie są kilka ptaków wodnych, unoszących się na leniwym nurcie rzeki.'), nl,
     write('Pomimo starannych poszukiwań, wydaje się, że rzeka nie kryje żadnych tajemniczych przedmiotów czy innych odkryć.'), nl.
 
+%tracisz 3 hp
 describe(kanion) :-
     write('Nagle zapada się pod tobą ziemia, cudem przeżywasz upadek jednak teraz znajdujesz sięna dnie wielkiego kanionu.'), nl,
     write('Ściany skalne wznoszą się ku niebu, tworząc imponujący labirynt głębokich wąwozów.'), nl,
@@ -188,6 +189,7 @@ search(jaskinia1) :-
     write('Twoje starania zostają nagrodzone, gdy znajdujesz fragment portalu ukryty wśród szczątków pokonanego wroga.'), nl,
     write('Ten tajemniczy fragment emanuje magiczną energią, sugerując, że może być kluczowym elementem w dalszej części twojej przygody.'), nl.
 
+% -1hp zimno
 describe(tajga) :-
     write('Przechadzasz się przez tajgę, gdzie drzewa sosnowe gęsto porastają obszar wokół ciebie.'), nl,
     write('Pod stopami chrupie suchy mech, a powietrze nasycone jest zapachem żywicy.'), nl,
@@ -308,11 +310,30 @@ instructions :-
 
 % describe health change
 
-describeHelathChange(laka, 'Zaatakowali cię bandyci! Straciłeś 3 punkty życia').
-describeHelathChange(kanion, 'Znalazłeś medPack-a! Zyskałeś 4 punkty życia').
+
+describeHelathChange(kanion, 'Z powodu upadku odniosłeś ciężkie obrażenia tracisz 3 punkty życia').
+describeHelathChange(wysokieGory, 'Podczas wspinaczki po niedostępnych górach tracisz 4 punkty życia').
+describeHelathChange(tundra, 'W każdą stornę wieczna zmarźlina, brak drewna na opał, tracisz 3 punkty życia').
+describeHelathChange(tajga, 'Choć ten wielki las sosnowy wydaje się być przyjazny to zdradliwy mróz sprawia, że tracisz 1 punkt życia').
+
+
+describeHelathChange(zlotaBransoleta, 'Dostajesz +2 punkty życia po założeniu złotej brosolety').
+describeHelathChange(naramiennik, 'Dostajesz +3 punkty życia po założeniu naramiennik znalezionej w skrzyni').
+describeHelathChange(sorzaneButy, 'Dostajesz +2 punkty życia po założeniu skórzanych butów z obozu rozbójników').
+describeHelathChange(miod, 'Dostajesz +2 punkty życia po zzjedzeniu miodu').
+describeHelathChange(zbroja, 'Dostajesz +4 punkty życia po założeniu zbroji').
+describeHelathChange(skoraWilka, 'Dostajesz +2 punkty życia po założeniu skóry wilka').
+describeHelathChange(chelb, 'Nie ma nic lepszego dla zdrowia niż dobre jedzenie, +2 punkty życia za zjedzenie świerzego chleba').
+
+
 
 % describe atack change
-describeAtackChange(patyk, 'Dostajesz +3 do ataku za podniesienie drewnianego patyka').
+describeAtackChange(patyk, 'Dostajesz +2 do ataku za podniesienie drewnianego patyka').
+describeAtackChange(kamien, 'Dostajesz +1 do ataku za podniesienie kamienia').
+describeAtackChange(miecz, 'Dostajesz +4 do ataku za podniesienie miecza').
+
+
+
 
 % decsribe lose atack
 loseAtackMsg(laka, '').
