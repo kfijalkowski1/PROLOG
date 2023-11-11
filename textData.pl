@@ -1,3 +1,6 @@
+:- discontiguous describe/1.
+:- discontiguous search/1.
+
 % description
 describe(pustkowie2) :-
     write('Wędrujesz przez pustkowie, gdzie krajobraz jest surowy, a ziemia spękana od przesuszenia.'), nl,
@@ -82,7 +85,7 @@ describe(kanion) :-
     write('Ściany skalne wznoszą się ku niebu, tworząc imponujący labirynt głębokich wąwozów.'), nl,
     write('W dnie kanionu płynie mały strumyk, którego błyszczące wody stanowią błękitną nitkę wśród skalistego krajobrazu.'), nl.
 
-search(kanionu) :-    
+search(kanionu) :-
     write('Podczas przeszukiwania kanionu znajdujesz tylko kilka porozrzucanych kości,'), nl,
     write('które wydają się być pozostałością po podróżnych, którzy nie mieli tyle szczęścia co ty.'), nl.
 
@@ -214,3 +217,12 @@ instructions :-
 
 describeHelathChange(laka, 'Zaatakowali cię bandyci! Straciłeś 3 punkty życia').
 describeHelathChange(kanion, 'Znalazłeś medPack-a! Zyskałeś 4 punkty życia').
+
+% describe atack change
+describeAtackChange(patyk, 'Dostajesz +3 do ataku za podniesienie drewnianego patyka').
+
+% decsribe lose atack
+loseAtackMsg(laka, '').
+
+% describe win atack
+winAtackMessage(laka, '').

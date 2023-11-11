@@ -2,7 +2,7 @@
 
 :- dynamic i_am_at/1, at/2, holding/1, describe/1, go/1, instructions/0, health/1, atack/1, describeHelathChange/2, lastDirection/1.
 :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)).
-:- retractall(health(_)) .
+:- retractall(health(_)), retractall(atack(_)) .
 
 :- consult('textData.pl').
 :- consult('nonTextData.pl').
@@ -55,13 +55,13 @@ addAtack(Wepon) :-
         !, describeAtackChange(Wepon).
 
 
-atack :-
+makeAtack :-
         atack(CurrentAtack),
         i_am_at(Here),
         atackRequierd(Here, AtackRequierd),
         winAtackMessage(Here, WinMsg),
         loseAtackMsg(Here, LoseMsg),
-        (CurrentAtack >= AtackRequierd -> write(WinMEssage)),
+        (CurrentAtack >= AtackRequierd -> write(WinMsg)),
         (CurrentAtack < AtackRequierd -> write(LoseMsg), goBack).
 
 
