@@ -1,8 +1,8 @@
 /* Space destroyer, by Kamil Kuba Krzyś */
 
-:- dynamic i_am_at/1, at/2, describe/1, go/1, instructions/0, health/1, atack/1, describeHelathChange/2, lastDirection/1.
+:- dynamic i_am_at/1, at/2, describe/1, go/1, instructions/0, health/1, attack/1, describeHealthChange/2, lastDirection/1.
 :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)).
-:- retractall(health(_)), retractall(atack(_)) .
+:- retractall(health(_)), retractall(attack(_)) .
 
 :- consult('textData.pl').
 :- consult('nonTextData.pl').
@@ -11,14 +11,14 @@
 /* starting point */
 i_am_at(laka).
 health(20).
-atack(0).
+attack(0).
 lastDirection(s).
 
-% zasady przemiszczania sie
+% zasady przemieszczania się
 map :-
         i_am_at(Place),
-        write("Aktualnie jestes w: "), write(Place), write(" możesz iść do:"), nl,
-        (path(Place, Y, X)), write(X), write(" w kierunku: "), write(Y), nl , fail.
+        write('Aktualnie jesteś w: '), write(Place), write(' możesz iść do:'), nl,
+        (path(Place, Y, X)), write(X), write(' w kierunku: '), write(Y), nl , fail.
 map.
 
 
@@ -28,61 +28,61 @@ map.
 
 goBack :-
         lastDirection(Direction),
-        directionOposite(Direction, OposideDirection),
+        directionOpposite(Direction, OppositeDirection),
         i_am_at(Here),
-        path(Here, OposideDirection, There),
+        path(Here, OppositeDirection, There),
         % change position
         retract(i_am_at(Here)),
         assert(i_am_at(There)),
-        !, write("uciekłeś do "), write(There), nl.
+        !, write('uciekłeś do '), write(There), nl.
 
 
-describeAtack :-
-        atack(AtackPoints),
-        write("Aktualnie masz: "), write(AtackPoints), write(" punktów ataku"), !, nl.
+describeAttack :-
+        attack(AttackPoints),
+        write('Aktualnie masz: '), write(AttackPoints), write(' punktów ataku'), !, nl.
 
 
-describeAtackChange(Wepon) :-
-        describeAtackChange(Wepon, Msg),
+describeAttackChange(Weapon) :-
+        describeAttackChange(Weapon, Msg),
         write(Msg), nl,
-        describeAtack.
+        describeAttack.
 
 
-addAtack(Wepon) :-
-        atack(CurrentAtack),
-        atackChanger(Wepon, AtackChange),
-        NewAtack is CurrentAtack + AtackChange,
-        retract(atack(_)),
-        assert(atack(NewAtack)),
-        !, describeAtackChange(Wepon).
+addAttack(Weapon) :-
+        attack(CurrentAttack),
+        attackChanger(Weapon, AttackChange),
+        NewAttack is CurrentAttack + AttackChange,
+        retract(attack(_)),
+        assert(attack(NewAttack)),
+        !, describeAttackChange(Weapon).
 
 
-makeAtack :-
-        atack(CurrentAtack),
+makeAttack :-
+        attack(CurrentAttack),
         i_am_at(Here),
-        atackRequierd(Here, AtackRequierd),
+        attackRequired(Here, AttackRequired),
         i_am_at(Here),
-        winAtackMessage(Here, WinMsg),
-        loseAtackMsg(Here, LoseMsg),
-        (CurrentAtack >= AtackRequierd -> write(WinMsg), nl; true),
-        (CurrentAtack < AtackRequierd -> write(LoseMsg), nl, write('aktualna ilość puktów ataku: '), write(CurrentAtack), write(', wymagana ilość: '), write(AtackRequierd), nl, changeHealth, goBack; true).
+        winAttackMessage(Here, WinMsg),
+        loseAttackMsg(Here, LoseMsg),
+        (CurrentAttack >= AttackRequired -> write(WinMsg), nl; true),
+        (CurrentAttack < AttackRequired -> write(LoseMsg), nl, write('aktualna ilość puktów ataku: '), write(CurrentAttack), write(', wymagana ilość: '), write(AttackRequired), nl, changeHealth, goBack; true).
 
 
 % Zasady związane z punktami życia
 
 describeHealth :-
         health(HealthPoints),
-        write("Aktualnie masz: "), write(HealthPoints), write(" punktów życia"), !, nl.
+        write('Aktualnie masz: '), write(HealthPoints), write(' punktów życia'), !, nl.
 
-describeHelathChange :-
+describeHealthChange :-
         i_am_at(Place),
-        describeHelathChange(Place, Msg),
+        describeHealthChange(Place, Msg),
         write(Msg), nl,
         describeHealth.
 
 checkHealth :-
         health(HealthPoints),
-        (HealthPoints < 1 -> write("Umierasz, skończyly ci się punkty życia"), die; true).
+        (HealthPoints < 1 -> write('Umierasz, skończyły Ci się punkty życia'), die; true).
 
 changeHealth :-
         i_am_at(Place),
@@ -92,7 +92,7 @@ changeHealth :-
         retract(health(CurrentHealth)),
         assert(health(NewHealth)),
         checkHealth,
-        !, describeHelathChange.
+        !, describeHealthChange.
 
 
 /* These rules describe how to pick up an object. */
@@ -107,7 +107,7 @@ take(X) :-
         at(X, Place),
         retract(at(X, Place)),
         % assert(holding(X)),
-        addAtackandHealth(X),
+        addAttackAndHealth(X),
         !, nl.
 
 take(_) :-
@@ -150,12 +150,12 @@ go(Direction) :-
         % set last move
         retract(lastDirection(_)),
         assert(lastDirection(Direction)),
-        !, makeAtack, look.
+        !, makeAttack, look.
 
 % teleport(Place)
 
 go(_) :-
-        write('You can''t go that way.').
+        write('You cant go that way.').
 
 
 /* This rule tells how to look about you. */
@@ -184,7 +184,7 @@ die :-
 
 
 stats :-
-        describeAtack,
+        describeAttack,
         describeHealth,
         map.
 
@@ -198,4 +198,3 @@ finish :-
 start :-
         instructions,
         look.
-

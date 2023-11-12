@@ -122,7 +122,7 @@ path(tundra, e, stepy).
 % layout of objects
 
 at(portalOne, statek).
-at(poratTwo, caveOne).
+at(portalTwo, caveOne).
 at(portalThree, caveTwo).
 at(sword, mesa).
 at(patyk, laka).
@@ -133,14 +133,14 @@ healthChanger(kanion, -4).
 
 
 % directions reverse
-directionOposite(n, s).
-directionOposite(s, n).
-directionOposite(w, e).
-directionOposite(e, w).
+directionOpposite(n, s).
+directionOpposite(s, n).
+directionOpposite(w, e).
+directionOpposite(e, w).
 
 
-% atack values of objects
-atackChanger(patyk, 3).
+% attack values of objects
+attackChanger(patyk, 3).
 
-atackRequierd(laka, 0).
-atackRequierd(kanion, 10).
+attackRequired(laka, 0).
+attackRequired(kanion, 10).

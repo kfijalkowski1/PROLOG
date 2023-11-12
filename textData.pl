@@ -19,7 +19,7 @@ describe(oceanStatek) :-
     write('Wokół unoszą się ryby, a w szczelinach wraku odkrywasz tajemnice, które przetrwały upadek tego statku.'), nl,
     write('Czujesz nutę tajemnicy, gdy zbliżasz się do zatopionego wraku, a woda rozchodzi się wokół ciebie jak cicha opowieść o przeszłości.'), nl.
 
-% Opis odkrytej części portalu 1/3, złotej bransoletki +2 życia
+% Opis odkrytej części portalu 1/3, złotej bransoletki +2 punkty życia
 search(oceanStatek) :-
     write('Rozglądasz się wokół wraku i odkrywasz część portalu, która zdaje się być fragmentem starożytnego artefaktu.'), nl,
     write('Część portalu jest wykonana z nieznanego metalu i emanuje słabym światłem, sugerując swoją magiczną naturę.'), nl,
@@ -41,7 +41,7 @@ describe(rafaKoralowa) :-
     write('Na dnie rafy dostrzegasz ukryte jaskinie i groty, które stanowią schronienie dla różnorodnych morskich istot.'), nl,
     write('Dźwięki wody i śpiewu morskich istot wypełniają przestrzeń, nadając temu miejscu magii i niepowtarzalnego piękna.'), nl.
 
-% Opis odkrytej skrzynki po podenisieniu zanjduejsz w niej zbroje hp +3
+% Opis odkrytej skrzynki, po podniesieniu znajdujesz w niej zbroję +3 punkty życia
 search(rafaKoralowa) :-
     write('Podczas nurkowania w rafie koralowej dostrzegasz starą skrzynkę, która leży między koralami.'), nl,
     write('Skrzynka zdaje się być starożytna i pokryta kolorowymi morskimi roślinami, co czyni ją trudno dostrzegalną.'), nl.
@@ -63,7 +63,7 @@ describe(obozRozbojnikow) :-
     write('Wokół obozu czujesz podejrzane spojrzenia, a z oddali dobiegają odgłosy dzikich zwierząt, które współistnieją z rozbójnikami.'), nl,
     write('Gdy wkroczysz na teren obozu, nagle zostajesz zaatakowany przez grupę rozbójników! Musisz bronić się przed ich atakiem.'), nl.
 
-% Opis odkrytych skórzanych butów +2hp
+% Opis odkrytych skórzanych butów +2 punkty życia
 search(obozRozbojnikow) :-
     write('Po pokonaniu rozbójników, przeszukujesz obozowe zaułki i znajdujesz skórzane buty, które mogą się okazać użyteczne w dalszych przygodach.'), nl,
     write('Dodatkowo, natrafiasz na kilka pozostałości po wcześniejszych ofiarach rozbójników, ale większość wartościowych przedmiotów została rozgrabiona.'), nl.
@@ -96,7 +96,7 @@ describe(lasBrzozowy) :-
     write('Ptaki śpiewają miłe melodie, tworząc harmonijną symfonię natury, a ścieżki wiodą cię między korzeniami i pniami brzóz.'), nl,
     write('W oddali słychać szmer strumienia, który dodaje uroku temu malowniczemu zakątkowi lasu.'), nl.
 
-% Opis akcji przeszukania lasu brzozowego, miód +2hp
+% Opis akcji przeszukania lasu brzozowego, miód +2 punkty życia
 search(lasBrzozowy) :-
     write('Przeszukując las brzozowy, twoje uszy wychwytują delikatny dźwięk brzęczenia.'), nl,
     write('Podążasz za dźwiękiem i nagle trafiasz na ukryty ul pszczół, zbudowany w gęstym konarach drzew brzozowych.'), nl,
@@ -111,7 +111,7 @@ describe(jaskinia2) :-
     write('Nagle, z cienia jaskini wyłaniają się wrogie szkielety! Atakują cię zobacząc, ich oczy świecą złowrogo w mroku.'), nl,
     write('Musisz bronić się przed tymi nieumarłymi przeciwnikami, by kontynuować swoją podróż przez tę magiczną, lecz niebezpieczną jaskinię.'), nl.
 
-% Żelazna zbroja +4hp i część portalu 2/3
+% Żelazna zbroja +4 punkty życia i część portalu 2/3
 search(jaskinia2) :-
     write('Po zakończonym starciu ze szkieletami przystępujesz do przeszukania jaskini w poszukiwaniu cennych przedmiotów.'), nl,
     write('Okazuje się, że szkielety nie były tu bez powodu albowiem pilnowały one części portalu.'), nl,
@@ -200,12 +200,12 @@ describe(pustkowie1) :-
 
 instructions :-
         nl,
-        write('Używaj komend zgodnie z składnią prolog-a.'), nl,
+        write('Używaj komend zgodnie ze składnią prolog-a.'), nl,
         write('dostępne komendy:'), nl,
         write('start.             -- aby rozpocząć grę.'), nl,
         write('n.  s.  e.  w.     -- aby iść w danym kierunku.'), nl,
         write('take(Object).      -- aby podnieść obiekt.'), nl,
-        write('drop(Object).      -- aby póścić obiekt.'), nl,
+        write('drop(Object).      -- aby puścić obiekt.'), nl,
         write('look.              -- aby się rozejrzeć.'), nl,
         write('instructions.      -- aby zobaczyć tą wiadomość.'), nl,
         write('halt.              -- aby zatrzymać grę i wyjść.'), nl,
@@ -216,32 +216,32 @@ instructions :-
 
 % describe health change
 
-describeHelathChange(kanion, 'Z powodu upadku odniosłeś ciężkie obrażenia tracisz 3 punkty życia').
-describeHelathChange(wysokieGory, 'Podczas wspinaczki po niedostępnych górach tracisz 4 punkty życia').
-describeHelathChange(tundra, 'W każdą stornę wieczna zmarźlina, brak drewna na opał, tracisz 3 punkty życia').
-describeHelathChange(tajga, 'Choć ten wielki las sosnowy wydaje się być przyjazny to zdradliwy mróz sprawia, że tracisz 1 punkt życia').
+describeHealthChange(kanion, 'Z powodu upadku odniosłeś ciężkie obrażenia, tracisz 3 punkty życia').
+describeHealthChange(wysokieGory, 'Podczas wspinaczki po niedostępnych górach tracisz 4 punkty życia').
+describeHealthChange(tundra, 'W każdą stronę wieczna zmarźlina, brak drewna na opał, tracisz 3 punkty życia').
+describeHealthChange(tajga, 'Choć ten wielki las sosnowy wydaje się być przyjazny, to zdradliwy mróz sprawia, że tracisz 1 punkt życia').
 
 
-describeHelathChange(zlotaBransoleta, 'Dostajesz +2 punkty życia po założeniu złotej brosolety').
-describeHelathChange(naramiennik, 'Dostajesz +3 punkty życia po założeniu naramiennik znalezionej w skrzyni').
-describeHelathChange(sorzaneButy, 'Dostajesz +2 punkty życia po założeniu skórzanych butów z obozu rozbójników').
-describeHelathChange(miod, 'Dostajesz +2 punkty życia po zzjedzeniu miodu').
-describeHelathChange(zbroja, 'Dostajesz +4 punkty życia po założeniu zbroji').
-describeHelathChange(skoraWilka, 'Dostajesz +2 punkty życia po założeniu skóry wilka').
-describeHelathChange(chelb, 'Nie ma nic lepszego dla zdrowia niż dobre jedzenie, +2 punkty życia za zjedzenie świerzego chleba').
+describeHealthChange(zlotaBransoleta, 'Dostajesz +2 punkty życia po założeniu złotej brosolety').
+describeHealthChange(naramiennik, 'Dostajesz +3 punkty życia po założeniu naramiennika znalezionego w skrzyni').
+describeHealthChange(skorzaneButy, 'Dostajesz +2 punkty życia po założeniu skórzanych butów z obozu rozbójników').
+describeHealthChange(miod, 'Dostajesz +2 punkty życia po zjedzeniu miodu').
+describeHealthChange(zbroja, 'Dostajesz +4 punkty życia po założeniu zbroji').
+describeHealthChange(skoraWilka, 'Dostajesz +2 punkty życia po założeniu skóry wilka').
+describeHealthChange(chleb, 'Nie ma nic lepszego dla zdrowia niż dobre jedzenie, +2 punkty życia za zjedzenie świeżego chleba').
 
 
 
-% describe atack change
-describeAtackChange(miecz, 'Dostajesz +4 do ataku za podniesienie miecza').
-describeAtackChange(patyk, 'Dostajesz +2 do ataku za podniesienie drewnianego patyka').
-describeAtackChange(kamien, 'Dostajesz +1 do ataku za podniesienie kamienia').
+% describe attack change
+describeAttackChange(miecz, 'Dostajesz +4 do ataku za podniesienie miecza').
+describeAttackChange(patyk, 'Dostajesz +2 do ataku za podniesienie drewnianego patyka').
+describeAttackChange(kamien, 'Dostajesz +1 do ataku za podniesienie kamienia').
 
 
-% decsribe lose atack
-loseAtackMsg(laka, 'lose laka').
-loseAtackMsg(kanion, 'lose kanion').
+% describe lose attack
+loseAttackMsg(laka, 'lose laka').
+loseAttackMsg(kanion, 'lose kanion').
 
-% describe win atack
-winAtackMessage(laka, 'win laka').
-winAtackMessage(kanion, 'win kanion').
+% describe win attack
+winAttackMessage(laka, 'win laka').
+winAttackMessage(kanion, 'win kanion').
