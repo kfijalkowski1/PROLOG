@@ -216,11 +216,27 @@ instructions :-
 
 % describe health change
 
-describeHelathChange(laka, 'Zaatakowali cię bandyci! Straciłeś 3 punkty życia').
-describeHelathChange(kanion, 'Zaatakowali cię bandyci! Straciłeś 4 punkty życia').
+describeHelathChange(kanion, 'Z powodu upadku odniosłeś ciężkie obrażenia tracisz 3 punkty życia').
+describeHelathChange(wysokieGory, 'Podczas wspinaczki po niedostępnych górach tracisz 4 punkty życia').
+describeHelathChange(tundra, 'W każdą stornę wieczna zmarźlina, brak drewna na opał, tracisz 3 punkty życia').
+describeHelathChange(tajga, 'Choć ten wielki las sosnowy wydaje się być przyjazny to zdradliwy mróz sprawia, że tracisz 1 punkt życia').
+
+
+describeHelathChange(zlotaBransoleta, 'Dostajesz +2 punkty życia po założeniu złotej brosolety').
+describeHelathChange(naramiennik, 'Dostajesz +3 punkty życia po założeniu naramiennik znalezionej w skrzyni').
+describeHelathChange(sorzaneButy, 'Dostajesz +2 punkty życia po założeniu skórzanych butów z obozu rozbójników').
+describeHelathChange(miod, 'Dostajesz +2 punkty życia po zzjedzeniu miodu').
+describeHelathChange(zbroja, 'Dostajesz +4 punkty życia po założeniu zbroji').
+describeHelathChange(skoraWilka, 'Dostajesz +2 punkty życia po założeniu skóry wilka').
+describeHelathChange(chelb, 'Nie ma nic lepszego dla zdrowia niż dobre jedzenie, +2 punkty życia za zjedzenie świerzego chleba').
+
+
 
 % describe atack change
-describeAtackChange(patyk, 'Dostajesz +3 do ataku za podniesienie drewnianego patyka').
+describeAtackChange(miecz, 'Dostajesz +4 do ataku za podniesienie miecza').
+describeAtackChange(patyk, 'Dostajesz +2 do ataku za podniesienie drewnianego patyka').
+describeAtackChange(kamien, 'Dostajesz +1 do ataku za podniesienie kamienia').
+
 
 % decsribe lose atack
 loseAtackMsg(laka, 'lose laka').
