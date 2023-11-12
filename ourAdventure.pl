@@ -58,8 +58,6 @@ addAtack(Wepon) :-
 
 
 makeAtack :-
-        % makeWinAtack,
-        % makeFailAtack.
         atack(CurrentAtack),
         i_am_at(Here),
         atackRequierd(Here, AtackRequierd),
@@ -68,25 +66,6 @@ makeAtack :-
         loseAtackMsg(Here, LoseMsg),
         (CurrentAtack >= AtackRequierd -> write(WinMsg), nl; true),
         (CurrentAtack < AtackRequierd -> write(LoseMsg), nl, write('aktualna ilość puktów ataku: '), write(CurrentAtack), write(', wymagana ilość: '), write(AtackRequierd), nl, changeHealth, goBack; true).
-
-
-
-makeWinAtack :-
-        atack(CurrentAtack),
-        i_am_at(Here),
-        atackRequierd(Here, AtackRequierd),
-        winAtackMessage(Here, WinMsg),
-        (CurrentAtack >= AtackRequierd -> write(WinMsg), fail).
-makeWinAtack.
-
-
-makeFailAtack:-
-        atack(CurrentAtack),
-        i_am_at(Here),
-        atackRequierd(Here, AtackRequierd),
-        loseAtackMsg(Here, LoseMsg),
-        (CurrentAtack < AtackRequierd -> write(LoseMsg), changeHealth, goBack, fail).
-makeFailAtack.
 
 
 % Zasady związane z punktami życia
@@ -128,7 +107,7 @@ take(X) :-
         at(X, Place),
         retract(at(X, Place)),
         % assert(holding(X)),
-        addAtack(X),
+        addAtackandHealth(X),
         !, nl.
 
 take(_) :-
