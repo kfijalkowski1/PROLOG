@@ -128,7 +128,7 @@ describe(gory) :-
     write('Pomimo tego incydentu, nadal masz okazję podziwiać piękno górskiego krajobrazu, choć teraz również musisz dbać o swoje zdrowie.'), nl.
 
 
-% Miecz +4 ataku 
+% Miecz +4 ataku
 search(gory) :-
     write('Podczas eksploracji gór odkrywasz ukryte zakamarki, gdzie światło słońca ledwo przedostaje się.'), nl,
     write('Twoje spojrzenie przyciąga tajemniczy miecz, leżący na kamiennej półce. Wydaje się być magiczny i niezwykle potężny.'), nl,
@@ -164,7 +164,7 @@ search(lasDebowy) :-
     write('Twoje starania zostają nagrodzone, gdy natrafiasz na skóry wilków, które mogą posłużyć do produkcji trwałego pancerza.'), nl,
     write('Dodatkowo, znajdujesz twardy kij, który może stanowić przydatną broń lub narzędzie w dalszej podróży.'), nl.
 
-% -4 hp bo tak 
+% -4 hp bo tak
 describe(wysokieGory) :-
     write('Stoisz w cieniu potężnych szczytów wysokich gór, gdzie powietrze jest rzadkie, a krajobraz zapiera dech w piersiach.'), nl,
     write('Na ich szczytach błyszczą wieczne lodowce, a w dolinach unosi się lekka mgła.'), nl,
@@ -233,7 +233,7 @@ search(zniszczonyPortal) :-
     write('Zauważasz, że brakuje trzech ważnych części, które zapewne były kluczowe dla jego funkcjonowania.'), nl,
     write('Możliwe, że odnalezienie tych zagubionych elementów może być kluczowym zadaniem w twojej podróży.'), nl.
 
-%-3hp zimno 
+%-3hp zimno
 describe(tundra) :-
     write('Przechadzasz się po rozległej tundrze, gdzie ziemia jest pokryta warstwą mchu i niskich krzewów, a drzewa są rzadkością.'), nl,
     write('Pod stopami czujesz chłód wilgotnej gleby, a w powietrzu unosi się delikatny zapach mchu i roślinności tundry.'), nl,
@@ -291,6 +291,9 @@ search(pustkowie1) :-
     write('Pustkowia zdają się być opuszczone, nie pozostawiając śladu po obecności czy ukrytych skarbach.'), nl.
 
 
+describe(moon) :-
+    write('Księżyc.'), nl.
+
 % instructions
 
 instructions :-
@@ -317,20 +320,20 @@ describeHealthChange(tundra, 'W każdą stronę wieczna zmarźlina, brak drewna 
 describeHealthChange(tajga, 'Choć ten wielki las sosnowy wydaje się być przyjazny, to zdradliwy mróz sprawia, że tracisz 1 punkt życia').
 
 
-describeHealthChange(zlotaBransoleta, 'Dostajesz +2 punkty życia po założeniu złotej brosolety').
-describeHealthChange(naramiennik, 'Dostajesz +3 punkty życia po założeniu naramiennika znalezionego w skrzyni').
-describeHealthChange(skorzaneButy, 'Dostajesz +2 punkty życia po założeniu skórzanych butów z obozu rozbójników').
-describeHealthChange(miod, 'Dostajesz +2 punkty życia po zjedzeniu miodu').
-describeHealthChange(zbroja, 'Dostajesz +4 punkty życia po założeniu zbroji').
-describeHealthChange(skoraWilka, 'Dostajesz +2 punkty życia po założeniu skóry wilka').
-describeHealthChange(chleb, 'Nie ma nic lepszego dla zdrowia niż dobre jedzenie, +2 punkty życia za zjedzenie świeżego chleba').
+describeStatsChange(zlotaBransoleta, 'Dostajesz +2 punkty życia po założeniu złotej brosolety').
+describeStatsChange(naramiennik, 'Dostajesz +3 punkty życia po założeniu naramiennika znalezionego w skrzyni').
+describeStatsChange(skorzaneButy, 'Dostajesz +2 punkty życia po założeniu skórzanych butów z obozu rozbójników').
+describeStatsChange(miod, 'Dostajesz +2 punkty życia po zjedzeniu miodu').
+describeStatsChange(zbroja, 'Dostajesz +4 punkty życia po założeniu zbroji').
+describeStatsChange(skoraWilka, 'Dostajesz +2 punkty życia po założeniu skóry wilka').
+describeStatsChange(chleb, 'Nie ma nic lepszego dla zdrowia niż dobre jedzenie, +2 punkty życia za zjedzenie świeżego chleba').
 
 
 
 % describe attack change
-describeAttackChange(miecz, 'Dostajesz +4 do ataku za podniesienie miecza').
-describeAttackChange(patyk, 'Dostajesz +2 do ataku za podniesienie drewnianego patyka').
-describeAttackChange(kamien, 'Dostajesz +1 do ataku za podniesienie kamienia').
+describeStatsChange(miecz, 'Dostajesz +4 do ataku za podniesienie miecza').
+describeStatsChange(patyk, 'Dostajesz +2 do ataku za podniesienie drewnianego patyka').
+describeStatsChange(kamien, 'Dostajesz +1 do ataku za podniesienie kamienia').
 
 
 % describe lose attack

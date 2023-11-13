@@ -126,6 +126,9 @@ at(portalTwo, caveOne).
 at(portalThree, caveTwo).
 at(sword, mesa).
 at(patyk, laka).
+at(gate1, laka).
+at(gate2, laka).
+at(gate3, laka).
 
 % health changers
 healthChanger(laka, -3).
@@ -139,11 +142,11 @@ directionOpposite(w, e).
 directionOpposite(e, w).
 
 
-% attack values of objects
-attackChanger(patyk, 3).
+% attack values of objects (object, atackChange, healthChange)
+statsChanger(patyk, 3, 0).
 
-attackRequired(laka, 0).
-attackRequired(kanion, 10).
+% attackRequired(laka, 0).
+% attackRequired(kanion, 10).
 attackRequired(obozRozbojnikow, 9).
 attackRequired(jaskiniaPodwodna, 5).
 attackRequired(jaskinia2, 7).

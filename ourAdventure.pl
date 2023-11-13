@@ -1,6 +1,6 @@
 /* Space destroyer, by Kamil Kuba Krzyś */
 
-:- dynamic i_am_at/1, at/2, describe/1, go/1, instructions/0, health/1, attack/1, describeHealthChange/2, lastDirection/1.
+:- dynamic i_am_at/1, at/2, describe/1, go/1, instructions/0, health/1, attack/1, describeHealthChange/2, lastDirection/1, holding/1.
 :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)).
 :- retractall(health(_)), retractall(attack(_)) .
 
@@ -48,13 +48,14 @@ describeAttackChange(Weapon) :-
         describeAttack.
 
 
-addAttack(Weapon) :-
+addAttackAndHealth(Weapon) :-
         attack(CurrentAttack),
-        attackChanger(Weapon, AttackChange),
+        statsChanger(Weapon, AttackChange, HealthChange),
         NewAttack is CurrentAttack + AttackChange,
         retract(attack(_)),
         assert(attack(NewAttack)),
         !, describeAttackChange(Weapon).
+addAttackAndHealth(_).
 
 
 makeAttack :-
@@ -106,7 +107,7 @@ take(X) :-
         i_am_at(Place),
         at(X, Place),
         retract(at(X, Place)),
-        % assert(holding(X)),
+        assert(holding(X)),
         addAttackAndHealth(X),
         !, nl.
 
@@ -116,18 +117,20 @@ take(_) :-
 
 
 /* These rules describe how to put down an object. */
+teleportMoon :-
+        i_am_at(Here),
+        retract(i_am_at(Here)),
+        assert(i_am_at(moon)),
+        !, look.
 
-% drop(X) :-
-%         holding(X),
-%         i_am_at(Place),
-%         retract(holding(X)),
-%         assert(at(X, Place)),
-%         write('OK.'),
-%         !, nl.
 
-% drop(_) :-
-%         write('You aren''t holding it!'),
-%         nl.
+goToMoon :-
+        holding(gate1),
+        holding(gate2),
+        holding(gate3),
+        !, teleportMoon.
+goToMoon :-
+        write('Zbierz wszystkie elementy (Gate1, Gate2, Gate3) aby polecieć na księżyc').
 
 
 /* These rules define the direction letters as calls to go/1. */
