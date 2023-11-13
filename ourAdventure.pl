@@ -1,6 +1,6 @@
 /* Space destroyer, by Kamil Kuba Krzyś */
 
-:- dynamic i_am_at/1, at/2, describe/1, go/1, instructions/0, health/1, attack/1, describeHealthChange/2, lastDirection/1, holding/1.
+:- dynamic i_am_at/1, at/2, describe/1, go/1, instructions/0, health/1, attack/1, describeStatsChange/2, lastDirection/1, holding/1.
 :- retractall(at(_, _)), retractall(i_am_at(_)), retractall(alive(_)).
 :- retractall(health(_)), retractall(attack(_)) .
 
@@ -50,11 +50,16 @@ describeAttackChange(Weapon) :-
 
 addAttackAndHealth(Weapon) :-
         attack(CurrentAttack),
+        health(CurrentHealth),
         statsChanger(Weapon, AttackChange, HealthChange),
         NewAttack is CurrentAttack + AttackChange,
+        NewHealth is CurrentHealth + HealthChange,
+        retract(health(CurrentHealth)),
+        assert(health(NewHealth)),
         retract(attack(_)),
         assert(attack(NewAttack)),
-        !, describeAttackChange(Weapon).
+        describeStatsChange(Weapon, Msg),
+        !, write(Msg), nl, stats.
 addAttackAndHealth(_).
 
 
@@ -98,11 +103,6 @@ changeHealth :-
 
 /* These rules describe how to pick up an object. */
 
-% take(X) :-
-%         holding(X),
-%         write('Już to posiadasz'),
-%         !, nl.
-
 take(X) :-
         i_am_at(Place),
         at(X, Place),
@@ -128,7 +128,7 @@ goToMoon :-
         holding(gate1),
         holding(gate2),
         holding(gate3),
-        !, teleportMoon.
+        !, teleportMoon, finish.
 goToMoon :-
         write('Zbierz wszystkie elementy (Gate1, Gate2, Gate3) aby polecieć na księżyc').
 
@@ -183,7 +183,7 @@ notice_objects_at(_).
 
 
 die :-
-        finish.
+        halt.
 
 
 stats :-
@@ -194,7 +194,7 @@ stats :-
 
 finish :-
         nl,
-        write('The game is over. Please enter the "halt." command.'),
+        write('Zwycięstwo! wpisz halt. aby zamknąć grę'),
         nl.
 
 
