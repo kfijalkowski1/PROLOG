@@ -337,6 +337,16 @@ describeAttackChange(kamien, 'Dostajesz +1 do ataku za podniesienie kamienia').
 loseAttackMsg(laka, 'lose laka').
 loseAttackMsg(kanion, 'lose kanion').
 
+loseAttackMsg(obozRozbojnikow, 'lose obozRozbojnikow').
+loseAttackMsg(jaskiniaPodwodna, 'lose jaskiniaPodwodna').
+loseAttackMsg(jaskinia2, 'lose jaskinia2').
+loseAttackMsg(jaskinia1, 'lose jaskinia1').
+
 % describe win attack
 winAttackMessage(laka, 'win laka').
 winAttackMessage(kanion, 'win kanion').
+
+winAttackMessage(obozRozbojnikow, 'win obozRozbojnikow').
+winAttackMessage(jaskiniaPodwodna, 'win jaskiniaPodwodna').
+winAttackMessage(jaskinia2, 'win jaskinia2').
+winAttackMessage(jaskinia1, 'win jaskinia1').
