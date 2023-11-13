@@ -144,3 +144,9 @@ attackChanger(patyk, 3).
 
 attackRequired(laka, 0).
 attackRequired(kanion, 10).
+attackRequired(obozRozbojnikow, 9).
+attackRequired(jaskiniaPodwodna, 5).
+attackRequired(jaskinia2, 7).
+attackRequired(jaskinia1, 6).
+
+
