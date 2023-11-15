@@ -336,20 +336,14 @@ describeStatsChange(patyk, 'Dostajesz +2 do ataku za podniesienie drewnianego pa
 describeStatsChange(kamien, 'Dostajesz +1 do ataku za podniesienie kamienia').
 
 
-% describe lose attack
-loseAttackMsg(laka, 'lose laka').
-loseAttackMsg(kanion, 'lose kanion').
 
-loseAttackMsg(obozRozbojnikow, 'lose obozRozbojnikow').
-loseAttackMsg(jaskiniaPodwodna, 'lose jaskiniaPodwodna').
-loseAttackMsg(jaskinia2, 'lose jaskinia2').
-loseAttackMsg(jaskinia1, 'lose jaskinia1').
 
-% describe win attack
-winAttackMessage(laka, 'win laka').
-winAttackMessage(kanion, 'win kanion').
+loseAttackMsg(obozRozbojnikow, 'Niestety pomimo zaciętej walki ponosisz porażkę.').
+loseAttackMsg(jaskiniaPodwodna, 'Niestety pomimo zaciętej walki ponosisz porażkę.').
+loseAttackMsg(jaskinia2, 'Niestety pomimo zaciętej walki ponosisz porażkę.').
+loseAttackMsg(jaskinia1, 'Niestety pomimo zaciętej walki ponosisz porażkę.').
 
-winAttackMessage(obozRozbojnikow, 'win obozRozbojnikow').
-winAttackMessage(jaskiniaPodwodna, 'win jaskiniaPodwodna').
-winAttackMessage(jaskinia2, 'win jaskinia2').
-winAttackMessage(jaskinia1, 'win jaskinia1').
+winAttackMessage(obozRozbojnikow, 'Po zaciętej walce z rozbójnikami, w końcu odnosisz zwycięstwo!').
+winAttackMessage(jaskiniaPodwodna, 'Po zaciętej walce z utopcami, w końcu odnosisz zwycięstwo!').
+winAttackMessage(jaskinia2, 'Po zaciętej walce z szkieletami, w końcu odnosisz zwycięstwo!').
+winAttackMessage(jaskinia1, 'Po zaciętej walce z endermanem, w końcu odnosisz zwycięstwo!').
