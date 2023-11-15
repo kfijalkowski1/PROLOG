@@ -11,7 +11,7 @@
 /* starting point */
 i_am_at(laka).
 health(20).
-attack(0).
+attack(4).
 lastDirection(s).
 
 % zasady przemieszczania się
@@ -201,3 +201,4 @@ finish :-
 start :-
         instructions,
         look.
+
