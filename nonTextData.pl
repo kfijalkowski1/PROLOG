@@ -125,7 +125,7 @@ at(portalOne, oceanStatek).
 at(portalTwo, jaskinia2).
 at(portalThree, jaskinia1).
 at(miecz, gory).
-at(patyk, lasDebowy).
+at(patyk, tajga).
 at(zlotaBransoleta, oceanStatek).
 at(naramiennik, rafaKoralowa).
 at(skorzaneButy, obozRozbojnikow).
@@ -142,6 +142,15 @@ healthChanger(wysokieGory, -4).
 healthChanger(tundra, -3).
 healthChanger(tajga, -1).
 healthChanger(pustynia, -1).
+healthChanger(gory, -2).
+
+% health changers lost fight
+healthChangerLostFight(obozRozbojnikow, -8).
+healthChangerLostFight(jaskiniaPodwodna, -5).
+healthChangerLostFight(jaskinia2, -7).
+healthChangerLostFight(jaskinia1, -6).
+healthChangerLostFight(lasDebowy, -4).
+
 
 
 % directions reverse
@@ -164,11 +173,10 @@ statsChanger(skoraWilka, 2, 3).
 statsChanger(chleb, 0, 2).
 
 
-% attackRequired(laka, 0).
-% attackRequired(kanion, 10).
 attackRequired(obozRozbojnikow, 9).
 attackRequired(jaskiniaPodwodna, 5).
 attackRequired(jaskinia2, 7).
 attackRequired(jaskinia1, 6).
+attackRequired(lasDebowy, 4).
 
 

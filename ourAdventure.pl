@@ -11,7 +11,7 @@
 /* starting point */
 i_am_at(laka).
 health(20).
-attack(6).
+attack(4).
 lastDirection(s).
 
 % zasady przemieszczania się
@@ -32,9 +32,21 @@ goBack :-
         i_am_at(Here),
         path(Here, OppositeDirection, There),
         % change position
+        changeHealthLostFight(Here),
         retract(i_am_at(Here)),
         assert(i_am_at(There)),
-        !, write('uciekłeś do '), write(There), nl.
+        !, write('uciekłeś do '), write(There), nl,
+        nl.
+
+
+changeHealthLostFight(Place) :-
+        health(CurrentHealth),
+        healthChangerLostFight(Place, HealthChanger),
+        NewHealth is CurrentHealth + HealthChanger,
+        retract(health(CurrentHealth)),
+        assert(health(NewHealth)),
+        checkHealth.
+changeHealthLostFight.
 
 
 describeAttack :-
@@ -125,12 +137,12 @@ teleportMoon :-
 
 
 goToMoon :-
-        holding(gate1),
-        holding(gate2),
-        holding(gate3),
+        holding(portalOne),
+        holding(portalTwo),
+        holding(portalThree),
         !, teleportMoon, finish.
 goToMoon :-
-        write('Zbierz wszystkie elementy (Gate1, Gate2, Gate3) aby polecieć na księżyc').
+        write('Zbierz wszystkie elementy (portalOne, portalTwo, portalThree) aby polecieć na księżyc').
 
 
 /* These rules define the direction letters as calls to go/1. */
@@ -192,8 +204,7 @@ die :-
 
 stats :-
         describeAttack,
-        describeHealth,
-        map.
+        describeHealth.
 
 
 finish :-

@@ -158,11 +158,11 @@ describe(lasDebowy) :-
     write('Jednak w miarę jak zagłębiasz się głębiej, nagły odgłos skowytu wstrzymuje ci oddech. Wilki, drapieżniki lasu, zaczynają cię śledzić.'), nl,
     write('Nagle, z ciemności wyskakują wilki, atakując cię z zaskoczenia! Musisz bronić się przed tymi dzikimi stworzeniami, by przeżyć w tym niebezpiecznym lesie.'), nl.
 
-%skóra wilka +2h kij +2 ataku
+%skóra wilka
 search(lasDebowy) :-
     write('Po pokonaniu wilków, decydujesz się przeszukać otoczenie w poszukiwaniu użytecznych przedmiotów.'), nl,
-    write('Twoje starania zostają nagrodzone, gdy natrafiasz na skóry wilków, które mogą posłużyć do produkcji trwałego pancerza.'), nl,
-    write('Dodatkowo, znajdujesz twardy kij, który może stanowić przydatną broń lub narzędzie w dalszej podróży.'), nl.
+    write('Twoje starania zostają nagrodzone, gdy natrafiasz na skóry wilków, które mogą posłużyć do produkcji trwałego pancerza.'), nl.
+    
 
 % -4 hp bo tak
 describe(wysokieGory) :-
@@ -194,9 +194,10 @@ describe(tajga) :-
     write('Pod stopami chrupie suchy mech, a powietrze nasycone jest zapachem żywicy.'), nl,
     write('W oddali słychać szmer strumienia, a w górze przelatują kolorowe ptaki.'), nl,
     write('Jednak w miarę jak penetrujesz gęstwiny drzew, zaczynasz odczuwać mroźny chłód, który przeszywa powietrze.'), nl.
+    
 
 search(tajga) :-
-    write('Przeszukując tajgę, niestety nie natrafiasz na żadne wyraźne znaki czy ciekawe przedmioty.'), nl,
+    write('Przeszukując tajgę, natrafiasz na twardy kij, który może stanowić przydatną broń'), nl,
     write('Mimo gęstego drzewostanu i zapachu żywicy, to miejsce zdaje się być pozbawione ukrytych skarbów czy przydatnych artefaktów.'), nl,
     write('Możliwe, że tajga jest pięknym, ale surowym środowiskiem, które nie oferuje żadnych znaczących znalezisk.'), nl.
 
@@ -315,26 +316,27 @@ instructions :-
 
 % describe health change
 
-describeHealthChange(kanion, 'Z powodu upadku odniosłeś ciężkie obrażenia, tracisz 3 punkty życia').
-describeHealthChange(wysokieGory, 'Podczas wspinaczki po niedostępnych górach tracisz 4 punkty życia').
-describeHealthChange(tundra, 'W każdą stronę rozciąga się wieczna zmarźlina, brak drewna na opał, tracisz 3 punkty życia').
-describeHealthChange(tajga, 'Choć ten wielki las sosnowy wydaje się być przyjazny, to zdradliwy mróz sprawia, że tracisz 1 punkt życia').
-describeHealthChange(pustynia, 'Wielkie wydmy piasku aż po horyzont, brak cienia i nieznośny skwar, tracisz 1 punkty życia z powodu przegrzania').
+describeHealthChange(kanion, 'Z powodu upadku odniosłeś ciężkie obrażenia, tracisz 3 punkty życia.').
+describeHealthChange(wysokieGory, 'Podczas wspinaczki po niedostępnych górach tracisz 4 punkty życia.').
+describeHealthChange(gory, 'Podczas wspinaczki po  górach tracisz 2 punkty życia z powodu potknięcia.').
+describeHealthChange(tundra, 'W każdą stronę rozciąga się wieczna zmarźlina, brak drewna na opał, tracisz 3 punkty życia.').
+describeHealthChange(tajga, 'Choć ten wielki las sosnowy wydaje się być przyjazny, to zdradliwy mróz sprawia, że tracisz 1 punkt życia.').
+describeHealthChange(pustynia, 'Wielkie wydmy piasku aż po horyzont, brak cienia i nieznośny skwar, tracisz 1 punkty życia z powodu przegrzania.').
 
-describeStatsChange(zlotaBransoleta, 'Dostajesz +2 punkty życia i +2 do ataku, po założeniu złotej brosolety').
-describeStatsChange(naramiennik, 'Dostajesz +3 punkty życia po założeniu naramiennika znalezionego w skrzyni').
-describeStatsChange(skorzaneButy, 'Dostajesz +2 punkty życia po założeniu skórzanych butów z obozu rozbójników').
-describeStatsChange(miod, 'Dostajesz +2 punkty życia po zjedzeniu miodu').
-describeStatsChange(zbroja, 'Dostajesz +4 punkty życia po założeniu zbroji').
-describeStatsChange(skoraWilka, 'Dostajesz +2 punkty życia i +3 do ataku, po założeniu skóry wilka').
-describeStatsChange(chleb, 'Nie ma nic lepszego dla zdrowia niż dobre jedzenie, +2 punkty życia za zjedzenie świeżego chleba').
+describeStatsChange(zlotaBransoleta, 'Dostajesz +2 punkty życia i +2 do ataku, po założeniu złotej brosolety.').
+describeStatsChange(naramiennik, 'Dostajesz +3 punkty życia po założeniu naramiennika znalezionego w skrzyni.').
+describeStatsChange(skorzaneButy, 'Dostajesz +2 punkty życia po założeniu skórzanych butów z obozu rozbójników.').
+describeStatsChange(miod, 'Dostajesz +2 punkty życia po zjedzeniu miodu.').
+describeStatsChange(zbroja, 'Dostajesz +4 punkty życia po założeniu zbroji.').
+describeStatsChange(skoraWilka, 'Dostajesz +2 punkty życia i +3 do ataku, po założeniu skóry wilka.').
+describeStatsChange(chleb, 'Nie ma nic lepszego dla zdrowia niż dobre jedzenie, +2 punkty życia za zjedzenie świeżego chleba.').
 
 
 
 % describe attack change
-describeStatsChange(miecz, 'Dostajesz +4 do ataku za podniesienie miecza').
-describeStatsChange(patyk, 'Dostajesz +2 do ataku za podniesienie drewnianego patyka').
-describeStatsChange(kamien, 'Dostajesz +1 do ataku za podniesienie kamienia').
+describeStatsChange(miecz, 'Dostajesz +4 do ataku za podniesienie miecza.').
+describeStatsChange(patyk, 'Dostajesz +2 do ataku za podniesienie drewnianego patyka.').
+describeStatsChange(kamien, 'Dostajesz +1 do ataku za podniesienie kamienia.').
 
 
 
@@ -343,8 +345,10 @@ loseAttackMsg(obozRozbojnikow, 'Niestety pomimo zaciętej walki ponosisz porażk
 loseAttackMsg(jaskiniaPodwodna, 'Niestety pomimo zaciętej walki ponosisz porażkę.').
 loseAttackMsg(jaskinia2, 'Niestety pomimo zaciętej walki ponosisz porażkę.').
 loseAttackMsg(jaskinia1, 'Niestety pomimo zaciętej walki ponosisz porażkę.').
+loseAttackMsg(lasDebowy, 'Niestety pomimo zaciętej walki ponosisz porażkę.').
 
 winAttackMessage(obozRozbojnikow, 'Po zaciętej walce z rozbójnikami, w końcu odnosisz zwycięstwo!').
 winAttackMessage(jaskiniaPodwodna, 'Po zaciętej walce z utopcami, w końcu odnosisz zwycięstwo!').
 winAttackMessage(jaskinia2, 'Po zaciętej walce z szkieletami, w końcu odnosisz zwycięstwo!').
 winAttackMessage(jaskinia1, 'Po zaciętej walce z endermanem, w końcu odnosisz zwycięstwo!').
+winAttackMessage(lasDebowy, 'Po zaciętej walce z wilkami, w końcu odnosisz zwycięstwo!').
