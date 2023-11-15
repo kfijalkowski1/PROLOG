@@ -121,19 +121,19 @@ path(tundra, e, stepy).
 
 % layout of objects
 
-at(portalOne, statek).
-at(portalTwo, caveOne).
-at(portalThree, caveTwo).
-at(miecz, mesa).
-at(patyk, laka).
-at(zlotaBransoleta, laka).
-at(naramiennik, laka).
-at(skorzaneButy, laka).
-at(miod, laka).
-at(zbroja, laka).
-at(skoraWilka, laka).
-at(chleb, laka).
-at(kamien, laka).
+at(portalOne, oceanStatek).
+at(portalTwo, jaskinia2).
+at(portalThree, jaskinia1).
+at(miecz, gory).
+at(patyk, lasDebowy).
+at(zlotaBransoleta, oceanStatek).
+at(naramiennik, rafaKoralowa).
+at(skorzaneButy, obozRozbojnikow).
+at(miod, lasBrzozowy).
+at(zbroja, jaskinia2).
+at(skoraWilka, lasDebowy).
+at(chleb, wioska).
+at(kamien, pustkowie2).
 
 
 % health changers
