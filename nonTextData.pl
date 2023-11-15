@@ -173,7 +173,7 @@ statsChanger(skoraWilka, 2, 3).
 statsChanger(chleb, 0, 2).
 
 
-attackRequired(obozRozbojnikow, 9).
+attackRequired(obozRozbojnikow, 12).
 attackRequired(jaskiniaPodwodna, 5).
 attackRequired(jaskinia2, 7).
 attackRequired(jaskinia1, 6).
