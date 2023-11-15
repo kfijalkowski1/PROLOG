@@ -41,7 +41,7 @@ describe(rafaKoralowa) :-
     write('Na dnie rafy dostrzegasz ukryte jaskinie i groty, które stanowią schronienie dla różnorodnych morskich istot.'), nl,
     write('Dźwięki wody i śpiewu morskich istot wypełniają przestrzeń, nadając temu miejscu magii i niepowtarzalnego piękna.'), nl.
 
-% Opis odkrytej skrzynki, po podniesieniu znajdujesz w niej zbroję +3 punkty życia
+% Opis odkrytej skrzynki, po podniesieniu znajdujesz w naramiennik +3 punkty życia
 search(rafaKoralowa) :-
     write('Podczas nurkowania w rafie koralowej dostrzegasz starą skrzynkę, która leży między koralami.'), nl,
     write('Skrzynka zdaje się być starożytna i pokryta kolorowymi morskimi roślinami, co czyni ją trudno dostrzegalną.'), nl.
@@ -85,7 +85,7 @@ describe(kanion) :-
     write('Ściany skalne wznoszą się ku niebu, tworząc imponujący labirynt głębokich wąwozów.'), nl,
     write('W dnie kanionu płynie mały strumyk, którego błyszczące wody stanowią błękitną nitkę wśród skalistego krajobrazu.'), nl.
 
-search(kanionu) :-
+search(kanion) :-
     write('Podczas przeszukiwania kanionu znajdujesz tylko kilka porozrzucanych kości,'), nl,
     write('które wydają się być pozostałością po podróżnych, którzy nie mieli tyle szczęścia co ty.'), nl.
 
@@ -305,6 +305,7 @@ instructions :-
         write('take(Object).      -- aby podnieść obiekt.'), nl,
         write('drop(Object).      -- aby puścić obiekt.'), nl,
         write('look.              -- aby się rozejrzeć.'), nl,
+        write('search.            -- aby przeszukać lokacje.'), nl,
         write('instructions.      -- aby zobaczyć tą wiadomość.'), nl,
         write('halt.              -- aby zatrzymać grę i wyjść.'), nl,
         write('map.               -- aby dowiedzieć się gdzie można iść.'), nl,

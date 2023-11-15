@@ -11,7 +11,7 @@
 /* starting point */
 i_am_at(laka).
 health(20).
-attack(0).
+attack(6).
 lastDirection(s).
 
 % zasady przemieszczania się
@@ -72,7 +72,7 @@ makeAttack :-
         loseAttackMsg(Here, LoseMsg),
         (CurrentAttack >= AttackRequired -> write(WinMsg), nl; true),
         (CurrentAttack < AttackRequired -> write(LoseMsg), nl, write('aktualna ilość puktów ataku: '), write(CurrentAttack), write(', wymagana ilość: '), write(AttackRequired), nl, changeHealth, goBack; true).
-
+        makeAttack.
 
 % Zasady związane z punktami życia
 
@@ -99,7 +99,7 @@ changeHealth :-
         assert(health(NewHealth)),
         checkHealth,
         !, describeHealthChange.
-
+changeHealth.
 
 /* These rules describe how to pick up an object. */
 
@@ -153,7 +153,7 @@ go(Direction) :-
         % set last move
         retract(lastDirection(_)),
         assert(lastDirection(Direction)),
-        !, makeAttack, look.
+        !, makeAttack, look, changeHealth.
 
 % teleport(Place)
 
@@ -166,10 +166,14 @@ go(_) :-
 look :-
         i_am_at(Place),
         describe(Place),
+        nl.
+
+search :- 
+        i_am_at(Place),
+        search(Place),
         nl,
         notice_objects_at(Place),
         nl.
-
 
 /* These rules set up a loop to mention all the objects
    in your vicinity. */
