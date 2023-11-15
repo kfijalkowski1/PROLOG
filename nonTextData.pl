@@ -45,18 +45,6 @@ path(rzeka, e, kanion).
 path(rzeka, s, jezioro).
 path(rzeka, w, obozRozbojnikow).
 
-
-path(rzeka, n, oceanStatek).
-path(rzeka, e, kanion).
-path(rzeka, s, jezioro).
-path(rzeka, w, obozRozbojnikow).
-
-path(rzeka, n, oceanStatek).
-path(rzeka, e, kanion).
-path(rzeka, s, jezioro).
-path(rzeka, w, obozRozbojnikow).
-
-
 path(oceanStatek, e, oceanPusty).
 path(oceanStatek, s, rzeka).
 path(oceanStatek, w, pustkowie2).
@@ -105,7 +93,6 @@ path(obozRozbojnikow, n, pustkowie2).
 path(obozRozbojnikow, e, rzeka).
 path(obozRozbojnikow, s, gory).
 
-
 path(pustkowie2, e, oceanStatek).
 path(pustkowie2, s, obozRozbojnikow).
 
@@ -152,7 +139,6 @@ healthChangerLostFight(jaskinia1, -6).
 healthChangerLostFight(lasDebowy, -4).
 
 
-
 % directions reverse
 directionOpposite(n, s).
 directionOpposite(s, n).
@@ -178,5 +164,3 @@ attackRequired(jaskiniaPodwodna, 5).
 attackRequired(jaskinia2, 7).
 attackRequired(jaskinia1, 6).
 attackRequired(lasDebowy, 4).
-
-

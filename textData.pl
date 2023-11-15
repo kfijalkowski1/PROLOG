@@ -162,7 +162,7 @@ describe(lasDebowy) :-
 search(lasDebowy) :-
     write('Po pokonaniu wilków, decydujesz się przeszukać otoczenie w poszukiwaniu użytecznych przedmiotów.'), nl,
     write('Twoje starania zostają nagrodzone, gdy natrafiasz na skóry wilków, które mogą posłużyć do produkcji trwałego pancerza.'), nl.
-    
+
 
 % -4 hp bo tak
 describe(wysokieGory) :-
@@ -194,7 +194,7 @@ describe(tajga) :-
     write('Pod stopami chrupie suchy mech, a powietrze nasycone jest zapachem żywicy.'), nl,
     write('W oddali słychać szmer strumienia, a w górze przelatują kolorowe ptaki.'), nl,
     write('Jednak w miarę jak penetrujesz gęstwiny drzew, zaczynasz odczuwać mroźny chłód, który przeszywa powietrze.'), nl.
-    
+
 
 search(tajga) :-
     write('Przeszukując tajgę, natrafiasz na twardy kij, który może stanowić przydatną broń'), nl,
@@ -295,6 +295,7 @@ search(pustkowie1) :-
 describe(moon) :-
     write('Księżyc.'), nl.
 
+
 % instructions
 
 instructions :-
@@ -304,12 +305,12 @@ instructions :-
         write('start.             -- aby rozpocząć grę.'), nl,
         write('n.  s.  e.  w.     -- aby iść w danym kierunku.'), nl,
         write('take(Object).      -- aby podnieść obiekt.'), nl,
-        write('drop(Object).      -- aby puścić obiekt.'), nl,
         write('look.              -- aby się rozejrzeć.'), nl,
         write('search.            -- aby przeszukać lokacje.'), nl,
         write('instructions.      -- aby zobaczyć tą wiadomość.'), nl,
         write('halt.              -- aby zatrzymać grę i wyjść.'), nl,
         write('map.               -- aby dowiedzieć się gdzie można iść.'), nl,
+        write('goToMoon.          -- aby spróbować polecieć na księżyc.'), nl,
         write('stats.             -- wyświetla aktualne statystyki gracza.'), nl,
         nl.
 
@@ -321,7 +322,7 @@ describeHealthChange(wysokieGory, 'Podczas wspinaczki po niedostępnych górach 
 describeHealthChange(gory, 'Podczas wspinaczki po  górach tracisz 2 punkty życia z powodu potknięcia.').
 describeHealthChange(tundra, 'W każdą stronę rozciąga się wieczna zmarźlina, brak drewna na opał, tracisz 3 punkty życia.').
 describeHealthChange(tajga, 'Choć ten wielki las sosnowy wydaje się być przyjazny, to zdradliwy mróz sprawia, że tracisz 1 punkt życia.').
-describeHealthChange(pustynia, 'Wielkie wydmy piasku aż po horyzont, brak cienia i nieznośny skwar, tracisz 1 punkty życia z powodu przegrzania.').
+describeHealthChange(pustynia, 'Wielkie wydmy piasku aż po horyzont, brak cienia i nieznośny skwar, tracisz 1 punkt życia z powodu przegrzania.').
 
 describeStatsChange(zlotaBransoleta, 'Dostajesz +2 punkty życia i +2 do ataku, po założeniu złotej brosolety.').
 describeStatsChange(naramiennik, 'Dostajesz +3 punkty życia po założeniu naramiennika znalezionego w skrzyni.').
@@ -332,14 +333,10 @@ describeStatsChange(skoraWilka, 'Dostajesz +2 punkty życia i +3 do ataku, po za
 describeStatsChange(chleb, 'Nie ma nic lepszego dla zdrowia niż dobre jedzenie, +2 punkty życia za zjedzenie świeżego chleba.').
 
 
-
 % describe attack change
 describeStatsChange(miecz, 'Dostajesz +4 do ataku za podniesienie miecza.').
 describeStatsChange(patyk, 'Dostajesz +2 do ataku za podniesienie drewnianego patyka.').
 describeStatsChange(kamien, 'Dostajesz +1 do ataku za podniesienie kamienia.').
-
-
-
 
 loseAttackMsg(obozRozbojnikow, 'Niestety pomimo zaciętej walki ponosisz porażkę.').
 loseAttackMsg(jaskiniaPodwodna, 'Niestety pomimo zaciętej walki ponosisz porażkę.').
@@ -349,6 +346,6 @@ loseAttackMsg(lasDebowy, 'Niestety pomimo zaciętej walki ponosisz porażkę.').
 
 winAttackMessage(obozRozbojnikow, 'Po zaciętej walce z rozbójnikami, w końcu odnosisz zwycięstwo!').
 winAttackMessage(jaskiniaPodwodna, 'Po zaciętej walce z utopcami, w końcu odnosisz zwycięstwo!').
-winAttackMessage(jaskinia2, 'Po zaciętej walce z szkieletami, w końcu odnosisz zwycięstwo!').
+winAttackMessage(jaskinia2, 'Po zaciętej walce ze szkieletami, w końcu odnosisz zwycięstwo!').
 winAttackMessage(jaskinia1, 'Po zaciętej walce z endermanem, w końcu odnosisz zwycięstwo!').
 winAttackMessage(lasDebowy, 'Po zaciętej walce z wilkami, w końcu odnosisz zwycięstwo!').

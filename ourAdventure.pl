@@ -17,7 +17,7 @@ lastDirection(s).
 % zasady przemieszczania się
 map :-
         i_am_at(Place),
-        write('Aktualnie jesteś w: '), write(Place), write(' możesz iść do:'), nl,
+        write('Aktualnie jesteś w: '), write(Place), nl, write('możesz iść do:'), nl,
         (path(Place, Y, X)), write(X), write(' w kierunku: '), write(Y), nl , fail.
 map.
 
@@ -180,7 +180,7 @@ look :-
         describe(Place),
         nl.
 
-search :- 
+search :-
         i_am_at(Place),
         search(Place),
         nl,

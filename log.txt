@@ -1,0 +1,338 @@
+?- [ourAdventure].
+true.
+
+?- start.
+
+Używaj komend zgodnie ze składnią prolog-a.
+dostępne komendy:
+start.             -- aby rozpocząć grę.
+n.  s.  e.  w.     -- aby iść w danym kierunku.
+take(Object).      -- aby podnieść obiekt.
+look.              -- aby się rozejrzeć.
+search.            -- aby przeszukać lokacje.
+instructions.      -- aby zobaczyć tą wiadomość.
+halt.              -- aby zatrzymać grę i wyjść.
+map.               -- aby dowiedzieć się gdzie można iść.
+goToMoon.          -- aby spróbować polecieć na księżyc.
+stats.             -- wyświetla aktualne statystyki gracza.
+
+Jesteś na malowniczej łące, gdzie zielenią traw rozbłyskują kolorowe kwiaty.
+Ptaki śpiewają w gałęziach drzew, a w oddali słychać szmer strumyka.
+
+true.
+
+?- stats.
+Aktualnie masz: 4 punktów ataku
+Aktualnie masz: 20 punktów życia
+true.
+
+?- search.
+Podczas przeszukiwania łąki, nie natrafiasz na żadne wyraźne znaki czy ciekawe przedmioty.
+Jedynym znaleziskiem są kolorowe kwiaty, które rozsiane są w każdą stronę, dodając uroku temu pięknemu miejscu.
+Wokół panuje spokój, a delikatny zapach kwiatów unosi się w powietrzu, tworząc idylliczną atmosferę.
+
+
+true.
+
+?- map.
+Aktualnie jesteś w: laka
+możesz iść do:
+kanion w kierunku: n
+lasDebowy w kierunku: e
+wioska w kierunku: s
+jezioro w kierunku: w
+true.
+
+?- n.
+Nagle zapada się pod tobą ziemia, cudem przeżywasz upadek jednak teraz znajdujesz sięna dnie wielkiego kanionu.
+Ściany skalne wznoszą się ku niebu, tworząc imponujący labirynt głębokich wąwozów.
+W dnie kanionu płynie mały strumyk, którego błyszczące wody stanowią błękitną nitkę wśród skalistego krajobrazu.
+
+Z powodu upadku odniosłeś ciężkie obrażenia, tracisz 3 punkty życia.
+Aktualnie masz: 17 punktów życia
+true.
+
+?- stats.
+Aktualnie masz: 4 punktów ataku
+Aktualnie masz: 17 punktów życia
+true.
+
+?- w.
+Stoisz na brzegu urokliwego jeziora, gdzie spokojna rzeka płynąca z gór wpada w jego nurt, tworząc malownicze połączenie wód.
+Miejsce to emanuje harmonią natury, gdzie szum rzeki miesza się z delikatnym falowaniem jeziora.
+Ptaki wodne unoszą się na powierzchni jeziora, a nad brzegiem rosną kolorowe kwiaty, zdobiąc otoczenie tego magicznego zakątka.
+Woda jeziora mieni się odcieniami niebieskiego, a promienie słońca odbijają się na powierzchni, jakby malowały błyszczący obraz natury.
+
+true.
+
+?- search.
+Przeszukujesz brzegi rzeki, starannie zwracając uwagę na otoczenie.
+Niestety, nie dostrzegasz niczego szczególnie interesującego.
+Jedynym ruchem na horyzoncie są kilka ptaków wodnych, unoszących się na leniwym nurcie rzeki.
+Pomimo starannych poszukiwań, wydaje się, że rzeka nie kryje żadnych tajemniczych przedmiotów czy innych odkryć.
+
+
+true.
+
+?- n.
+Unosisz nad dnem oceanu, gdzie rozciąga się zatopiony wrak statku, pozostawiający po sobie tylko fragmenty dawnej świetności.
+Roślinność morska oplata kadłub statku, a promienie słońca przebijające się przez wodę tworzą migotliwe światło na dnie oceanu.
+Wokół unoszą się ryby, a w szczelinach wraku odkrywasz tajemnice, które przetrwały upadek tego statku.
+Czujesz nutę tajemnicy, gdy zbliżasz się do zatopionego wraku, a woda rozchodzi się wokół ciebie jak cicha opowieść o przeszłości.
+
+true.
+
+?- search.
+Rozglądasz się wokół wraku i odkrywasz część portalu, która zdaje się być fragmentem starożytnego artefaktu.
+Część portalu jest wykonana z nieznanego metalu i emanuje słabym światłem, sugerując swoją magiczną naturę.
+Podczas przeszukiwania wnętrza wraku znajdujesz piękną złotą bransoletkę zdobioną misternymi wzorami.
+To wyjątkowy przedmiot, który zdaje się być starożytnym skarbem utraconym w czasie zatopienia statku.
+
+Jest tu portalOne
+Jest tu zlotaBransoleta
+
+true.
+
+?- take(portalOne).
+
+true.
+
+?- take(zlotaBransoleta).
+Dostajesz +2 punkty życia i +2 do ataku, po założeniu złotej brosolety.
+Aktualnie masz: 6 punktów ataku
+Aktualnie masz: 19 punktów życia
+
+true.
+
+?- w.
+Wędrujesz przez pustkowie, gdzie krajobraz jest surowy, a ziemia spękana od przesuszenia.
+Nie ma tu żadnych oznak życia, a jedynym towarzyszem jest oszałamiające słońce na bezchmurnym niebie.
+W oddali dostrzegasz samotne formacje skalne, które zdają się być ostatnimi świadkami dawnej obfitości tego terenu.
+Pustkowie emanuje atmosferą opuszczenia, a cisza jest jedynym dźwiękiem, jaki się tu rozchodzi.
+
+true.
+
+?- search.
+Rozglądasz się uważnie i dostrzegasz kamień, który może posłużyć za broń.
+Jest to solidny kamień o ostrym kształcie, nadający się do rzucania lub używania jako improwizowana broń.
+
+Jest tu kamien
+
+true.
+
+?- take(kamien).
+Dostajesz +1 do ataku za podniesienie kamienia.
+Aktualnie masz: 7 punktów ataku
+Aktualnie masz: 19 punktów życia
+
+true.
+
+?- map.
+Aktualnie jesteś w: pustkowie2
+możesz iść do:
+oceanStatek w kierunku: e
+obozRozbojnikow w kierunku: s
+true.
+
+?- s.
+Niestety pomimo zaciętej walki ponosisz porażkę.
+aktualna ilość puktów ataku: 7, wymagana ilość: 12
+uciekłeś do pustkowie2
+
+Wędrujesz przez pustkowie, gdzie krajobraz jest surowy, a ziemia spękana od przesuszenia.
+Nie ma tu żadnych oznak życia, a jedynym towarzyszem jest oszałamiające słońce na bezchmurnym niebie.
+W oddali dostrzegasz samotne formacje skalne, które zdają się być ostatnimi świadkami dawnej obfitości tego terenu.
+Pustkowie emanuje atmosferą opuszczenia, a cisza jest jedynym dźwiękiem, jaki się tu rozchodzi.
+
+true .
+
+?- stats.
+Aktualnie masz: 7 punktów ataku
+Aktualnie masz: 11 punktów życia
+true.
+
+?- e.
+Unosisz nad dnem oceanu, gdzie rozciąga się zatopiony wrak statku, pozostawiający po sobie tylko fragmenty dawnej świetności.
+Roślinność morska oplata kadłub statku, a promienie słońca przebijające się przez wodę tworzą migotliwe światło na dnie oceanu.
+Wokół unoszą się ryby, a w szczelinach wraku odkrywasz tajemnice, które przetrwały upadek tego statku.
+Czujesz nutę tajemnicy, gdy zbliżasz się do zatopionego wraku, a woda rozchodzi się wokół ciebie jak cicha opowieść o przeszłości.
+
+true.
+
+?- e.
+Nurkujesz w głąb oceanu, a wokół ciebie rozciąga się pusty, bezkresny obszar wód głębinowych.
+Brak jakiejkolwiek roślinności czy form życia, jedynie monotonny krajobraz niekończących się wód oceanicznych.
+Ciemność otacza cię ze wszystkich stron, a jedynym dźwiękiem jest łagodne szumienie wody przemieszczanej przez ruchy fal.
+To miejsce emanuje spokojem, ale jednocześnie wzbudza uczucie nieskończoności i tajemnicy oceanicznej głębi.
+
+true.
+
+?- e.
+Zanurzasz się w barwnym świecie rafy koralowej, gdzie tysiące koralowców tworzy niezwykłe formacje podwodne.
+Rafa pulsuje życiem, a kolorowe ryby przeplatają się między koralami, tworząc hipnotyzujący taniec pod wodą.
+Na dnie rafy dostrzegasz ukryte jaskinie i groty, które stanowią schronienie dla różnorodnych morskich istot.
+Dźwięki wody i śpiewu morskich istot wypełniają przestrzeń, nadając temu miejscu magii i niepowtarzalnego piękna.
+
+true.
+
+?- search.
+Podczas nurkowania w rafie koralowej dostrzegasz starą skrzynkę, która leży między koralami.
+Skrzynka zdaje się być starożytna i pokryta kolorowymi morskimi roślinami, co czyni ją trudno dostrzegalną.
+
+Jest tu naramiennik
+
+true.
+
+?- take(naramiennik).
+Dostajesz +3 punkty życia po założeniu naramiennika znalezionego w skrzyni.
+Aktualnie masz: 7 punktów ataku
+Aktualnie masz: 14 punktów życia
+
+true.
+
+?- map.
+Aktualnie jesteś w: rafaKoralowa
+możesz iść do:
+jaskiniaPodwodna w kierunku: e
+lasBrzozowy w kierunku: s
+oceanPusty w kierunku: w
+true.
+
+?- goToMoon.
+Zbierz wszystkie elementy (portalOne, portalTwo, portalThree) aby polecieć na księżyc
+true.
+
+?- e.
+Po zaciętej walce z utopcami, w końcu odnosisz zwycięstwo!
+Nurkujesz głęboko w czeluście podwodnej jaskini, gdzie światło słoneczne ledwo przenika przez kryształową wodę.
+Ściany jaskini są pokryte koralowymi formacjami, a kolorowe ryby migoczą wśród zakamarków, tworząc podwodne arcydzieło natury.
+Woda jest przejrzysta, a na dnie jaskini dostrzegasz ukryte jaskinie i szczeliny, które prowadzą do nieznanych zakątków podwodnego świata.
+W ciemnościach jaskini dostrzegasz podejrzany ruch, sugerujący obecność tajemniczych postaci ukrytych w cieniach.
+Dźwięki wody i subtelne szmery morskich istot wypełniają przestrzeń, nadając temu miejscu magiczny i tajemniczy charakter.
+
+true .
+
+?- stats.
+Aktualnie masz: 7 punktów ataku
+Aktualnie masz: 14 punktów życia
+true.
+
+?- search.
+W jaskini podwodnej dostrzegasz jedynie pozostałości po dawnych ucztach utopców.
+
+
+true.
+
+?- s.
+Po zaciętej walce ze szkieletami, w końcu odnosisz zwycięstwo!
+Wkraczasz do jaskini, a wnętrze mieni się blaskiem tysięcy kryształów o różnych kształtach i kolorach.
+Ściany jaskini są dosłownie pokryte błyszczącymi klejnotami, które odbijają światło w fantastyczny sposób.
+W powietrzu unoszą się iskry, tworząc magiczną aurę wokół ciebie, gdy kroczysz po posypanym kryształami podłożu.
+Delikatne dźwięki echo odbijają się od kryształów, tworząc hipnotyzującą symfonię, której nigdy wcześniej nie słyszałeś.
+Nagle, z cienia jaskini wyłaniają się wrogie szkielety! Atakują cię zobacząc, ich oczy świecą złowrogo w mroku.
+Musisz bronić się przed tymi nieumarłymi przeciwnikami, by kontynuować swoją podróż przez tę magiczną, lecz niebezpieczną jaskinię.
+
+true .
+
+?- search.
+Po zakończonym starciu ze szkieletami przystępujesz do przeszukania jaskini w poszukiwaniu cennych przedmiotów.
+Okazuje się, że szkielety nie były tu bez powodu albowiem pilnowały one części portalu.
+Część portalu jest wykonana z nieznanego metalu i emanuje słabym światłem, sugerując swoją magiczną naturę.
+Twoje badania zostają nagrodzone, gdy natrafiasz na żelazną zbroję ukrytą w jednym z zakamarków.
+Zbroja jest solidna i wydaje się być w dobrym stanie, gotowa do założenia i ochrony przed kolejnymi niebezpieczeństwami.
+
+Jest tu portalTwo
+Jest tu zbroja
+
+true.
+
+?- take(zbroja).
+Dostajesz +4 punkty życia po założeniu zbroji.
+Aktualnie masz: 7 punktów ataku
+Aktualnie masz: 18 punktów życia
+
+true.
+
+?- take(portalTwo).
+
+true.
+
+?- w.
+Przechadzasz się przez uroczy las brzozowy, gdzie delikatne liście brzóz szumią w letnim wietrze.
+Pod stopami czujesz miękki dywan z opadłych liści, a promienie słońca przebijające się przez korony drzew malują złote plamy na ziemi.
+Ptaki śpiewają miłe melodie, tworząc harmonijną symfonię natury, a ścieżki wiodą cię między korzeniami i pniami brzóz.
+W oddali słychać szmer strumienia, który dodaje uroku temu malowniczemu zakątkowi lasu.
+
+true.
+
+?- w.
+Nagle zapada się pod tobą ziemia, cudem przeżywasz upadek jednak teraz znajdujesz sięna dnie wielkiego kanionu.
+Ściany skalne wznoszą się ku niebu, tworząc imponujący labirynt głębokich wąwozów.
+W dnie kanionu płynie mały strumyk, którego błyszczące wody stanowią błękitną nitkę wśród skalistego krajobrazu.
+
+Z powodu upadku odniosłeś ciężkie obrażenia, tracisz 3 punkty życia.
+Aktualnie masz: 15 punktów życia
+true.
+
+?- s.
+Jesteś na malowniczej łące, gdzie zielenią traw rozbłyskują kolorowe kwiaty.
+Ptaki śpiewają w gałęziach drzew, a w oddali słychać szmer strumyka.
+
+true.
+
+?- s.
+Przechadzasz się przez malowniczą wioskę, gdzie drewniane domy układają się wzdłuż brukowanych uliczek.
+Ludzie rozmawiają ze sobą na ulicach, a dzieci biegają wesoło wokół zabawek.
+Na rynku widzisz kolorowe stragany, na których sprzedawane są świeże owoce i rękodzieła.
+
+true.
+
+?- w.
+Przechadzasz się przez tajgę, gdzie drzewa sosnowe gęsto porastają obszar wokół ciebie.
+Pod stopami chrupie suchy mech, a powietrze nasycone jest zapachem żywicy.
+W oddali słychać szmer strumienia, a w górze przelatują kolorowe ptaki.
+Jednak w miarę jak penetrujesz gęstwiny drzew, zaczynasz odczuwać mroźny chłód, który przeszywa powietrze.
+
+Choć ten wielki las sosnowy wydaje się być przyjazny, to zdradliwy mróz sprawia, że tracisz 1 punkt życia.
+Aktualnie masz: 14 punktów życia
+true.
+
+?- map.
+Aktualnie jesteś w: tajga
+możesz iść do:
+jezioro w kierunku: n
+wioska w kierunku: e
+stepy w kierunku: s
+jaskinia1 w kierunku: w
+true.
+
+?- w.
+Po zaciętej walce z endermanem, w końcu odnosisz zwycięstwo!
+Wchodzisz do ciemnej jaskini, gdzie ciemność otacza cię ze wszystkich stron.
+Mroczne tunele wydają się prowadzić głęboko pod ziemię.
+W miarę jak przemieszczasz się po jaskini, słyszysz dziwne, nieokreślone dźwięki, a zacienione kształty migocą na granicy twojej percepcji.
+Czujesz, że jesteś obserwowany, ale nie możesz zlokalizować źródła tej obecności.
+
+true .
+
+?- search.
+Po zaciętej walce z endermanem, decydujesz się dokładniej zbadać okolicę, by sprawdzić, czy nie ma żadnych wartościowych przedmiotów.
+Twoje starania zostają nagrodzone, gdy znajdujesz fragment portalu ukryty wśród szczątków pokonanego wroga.
+Ten tajemniczy fragment emanuje magiczną energią, sugerując, że może być kluczowym elementem w dalszej części twojej przygody.
+
+Jest tu portalThree
+
+true.
+
+?- take(portalThree).
+
+true.
+
+?- goToMoon.
+Księżyc.
+
+
+Zwycięstwo! wpisz halt. aby zamknąć grę
+true.
+
+?- halt.
