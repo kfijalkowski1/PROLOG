@@ -124,11 +124,17 @@ path(tundra, e, stepy).
 at(portalOne, statek).
 at(portalTwo, caveOne).
 at(portalThree, caveTwo).
-at(sword, mesa).
+at(miecz, mesa).
 at(patyk, laka).
-at(gate1, laka).
-at(gate2, laka).
-at(gate3, laka).
+at(zlotaBransoleta, laka).
+at(naramiennik, laka).
+at(skorzaneButy, laka).
+at(miod, laka).
+at(zbroja, laka).
+at(skoraWilka, laka).
+at(chleb, laka).
+at(kamien, laka).
+
 
 % health changers
 healthChanger(kanion, -3).
