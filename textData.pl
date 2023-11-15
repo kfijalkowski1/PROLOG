@@ -316,16 +316,16 @@ instructions :-
 
 describeHealthChange(kanion, 'Z powodu upadku odniosłeś ciężkie obrażenia, tracisz 3 punkty życia').
 describeHealthChange(wysokieGory, 'Podczas wspinaczki po niedostępnych górach tracisz 4 punkty życia').
-describeHealthChange(tundra, 'W każdą stronę wieczna zmarźlina, brak drewna na opał, tracisz 3 punkty życia').
+describeHealthChange(tundra, 'W każdą stronę rozciąga się wieczna zmarźlina, brak drewna na opał, tracisz 3 punkty życia').
 describeHealthChange(tajga, 'Choć ten wielki las sosnowy wydaje się być przyjazny, to zdradliwy mróz sprawia, że tracisz 1 punkt życia').
+describeHealthChange(pustynia, 'Wielkie wydmy piasku aż po horyzont, brak cienia i nieznośny skwar, tracisz 1 punkty życia z powodu przegrzania').
 
-
-describeStatsChange(zlotaBransoleta, 'Dostajesz +2 punkty życia po założeniu złotej brosolety').
+describeStatsChange(zlotaBransoleta, 'Dostajesz +2 punkty życia i +2 do ataku, po założeniu złotej brosolety').
 describeStatsChange(naramiennik, 'Dostajesz +3 punkty życia po założeniu naramiennika znalezionego w skrzyni').
 describeStatsChange(skorzaneButy, 'Dostajesz +2 punkty życia po założeniu skórzanych butów z obozu rozbójników').
 describeStatsChange(miod, 'Dostajesz +2 punkty życia po zjedzeniu miodu').
 describeStatsChange(zbroja, 'Dostajesz +4 punkty życia po założeniu zbroji').
-describeStatsChange(skoraWilka, 'Dostajesz +2 punkty życia po założeniu skóry wilka').
+describeStatsChange(skoraWilka, 'Dostajesz +2 punkty życia i +3 do ataku, po założeniu skóry wilka').
 describeStatsChange(chleb, 'Nie ma nic lepszego dla zdrowia niż dobre jedzenie, +2 punkty życia za zjedzenie świeżego chleba').
 
 

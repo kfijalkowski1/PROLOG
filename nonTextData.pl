@@ -131,8 +131,11 @@ at(gate2, laka).
 at(gate3, laka).
 
 % health changers
-healthChanger(laka, -3).
-healthChanger(kanion, -4).
+healthChanger(kanion, -3).
+healthChanger(wysokieGory, -4).
+healthChanger(tundra, -3).
+healthChanger(tajga, -1).
+healthChanger(pustynia, -1).
 
 
 % directions reverse
@@ -143,7 +146,17 @@ directionOpposite(e, w).
 
 
 % attack values of objects (object, atackChange, healthChange)
-statsChanger(patyk, 3, 0).
+statsChanger(patyk, 2, 0).
+statsChanger(kamien, 1, 0).
+statsChanger(miecz, 4, 0).
+statsChanger(zlotaBransoleta, 2, 2).
+statsChanger(naramiennik, 0, 3).
+statsChanger(skorzaneButy, 0, 2).
+statsChanger(miod, 0, 2).
+statsChanger(zbroja, 0, 4).
+statsChanger(skoraWilka, 2, 3).
+statsChanger(chleb, 0, 2).
+
 
 % attackRequired(laka, 0).
 % attackRequired(kanion, 10).
