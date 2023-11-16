@@ -6,6 +6,8 @@
 
 :- consult('textData.pl').
 :- consult('nonTextData.pl').
+:- consult('atackImpl.pl').
+:- consult('healthImpl.pl').
 
 
 % punkt startowy
@@ -20,91 +22,6 @@ map :-
         write('Aktualnie jesteś w: '), write(Place), nl, write('możesz iść do:'), nl,
         (path(Place, Y, X)), write(X), write(' w kierunku: '), write(Y), nl , fail.
 map.
-
-
-% zasady opisujące działanie ataku i cofania gracza po przegranej walce (gracz nie może wejść na pole jeśli nie ma wystarczająco ataku)
-
-goBack :-
-        lastDirection(Direction),
-        directionOpposite(Direction, OppositeDirection),
-        i_am_at(Here),
-        path(Here, OppositeDirection, There),
-        % change position
-        changeHealthLostFight(Here),
-        retract(i_am_at(Here)),
-        assert(i_am_at(There)),
-        !, write('uciekłeś do '), write(There), nl,
-        nl.
-
-changeHealthLostFight(Place) :-
-        health(CurrentHealth),
-        healthChangerLostFight(Place, HealthChanger),
-        NewHealth is CurrentHealth + HealthChanger,
-        retract(health(CurrentHealth)),
-        assert(health(NewHealth)),
-        checkHealth.
-changeHealthLostFight.
-
-describeAttack :-
-        attack(AttackPoints),
-        write('Aktualnie masz: '), write(AttackPoints), write(' punktów ataku'), !, nl.
-
-describeAttackChange(Weapon) :-
-        describeAttackChange(Weapon, Msg),
-        write(Msg), nl,
-        describeAttack.
-
-addAttackAndHealth(Weapon) :-
-        attack(CurrentAttack),
-        health(CurrentHealth),
-        statsChanger(Weapon, AttackChange, HealthChange),
-        NewAttack is CurrentAttack + AttackChange,
-        NewHealth is CurrentHealth + HealthChange,
-        retract(health(CurrentHealth)),
-        assert(health(NewHealth)),
-        retract(attack(_)),
-        assert(attack(NewAttack)),
-        describeStatsChange(Weapon, Msg),
-        !, write(Msg), nl, stats.
-addAttackAndHealth(_).
-
-makeAttack :-
-        attack(CurrentAttack),
-        i_am_at(Here),
-        attackRequired(Here, AttackRequired),
-        i_am_at(Here),
-        winAttackMessage(Here, WinMsg),
-        loseAttackMsg(Here, LoseMsg),
-        (CurrentAttack >= AttackRequired -> write(WinMsg), nl; true),
-        (CurrentAttack < AttackRequired -> write(LoseMsg), nl, write('aktualna ilość puktów ataku: '), write(CurrentAttack), write(', wymagana ilość: '), write(AttackRequired), nl, changeHealth, goBack; true).
-        makeAttack.
-
-% Zasady związane z punktami życia
-
-describeHealth :-
-        health(HealthPoints),
-        write('Aktualnie masz: '), write(HealthPoints), write(' punktów życia'), !, nl.
-
-describeHealthChange :-
-        i_am_at(Place),
-        describeHealthChange(Place, Msg),
-        write(Msg), nl,
-        describeHealth.
-
-checkHealth :-
-        health(HealthPoints),
-        (HealthPoints < 1 -> write('Umierasz, skończyły Ci się punkty życia'), die; true).
-
-changeHealth :-
-        i_am_at(Place),
-        health(CurrentHealth),
-        healthChanger(Place, HealthChanger),
-        NewHealth is CurrentHealth + HealthChanger,
-        retract(health(CurrentHealth)),
-        assert(health(NewHealth)),
-        checkHealth,
-        !, describeHealthChange.
-changeHealth.
 
 % Zasady określające podnoszenie obiektów
 
@@ -162,7 +79,7 @@ go(Direction) :-
 
 
 go(_) :-
-        write('You cant go that way.').
+        write('Nie możesz tam iść.').
 
 
 /* metody do rozglądania się. */
