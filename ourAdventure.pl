@@ -8,7 +8,7 @@
 :- consult('nonTextData.pl').
 
 
-/* starting point */
+% punkt startowy
 i_am_at(laka).
 health(20).
 attack(4).
@@ -22,9 +22,7 @@ map :-
 map.
 
 
-% podniesienie broni + ataku
-% obóz bandytów
-
+% zasady opisujące działanie ataku i cofania gracza po przegranej walce (gracz nie może wejść na pole jeśli nie ma wystarczająco ataku)
 
 goBack :-
         lastDirection(Direction),
@@ -38,7 +36,6 @@ goBack :-
         !, write('uciekłeś do '), write(There), nl,
         nl.
 
-
 changeHealthLostFight(Place) :-
         health(CurrentHealth),
         healthChangerLostFight(Place, HealthChanger),
@@ -48,17 +45,14 @@ changeHealthLostFight(Place) :-
         checkHealth.
 changeHealthLostFight.
 
-
 describeAttack :-
         attack(AttackPoints),
         write('Aktualnie masz: '), write(AttackPoints), write(' punktów ataku'), !, nl.
-
 
 describeAttackChange(Weapon) :-
         describeAttackChange(Weapon, Msg),
         write(Msg), nl,
         describeAttack.
-
 
 addAttackAndHealth(Weapon) :-
         attack(CurrentAttack),
@@ -73,7 +67,6 @@ addAttackAndHealth(Weapon) :-
         describeStatsChange(Weapon, Msg),
         !, write(Msg), nl, stats.
 addAttackAndHealth(_).
-
 
 makeAttack :-
         attack(CurrentAttack),
@@ -113,7 +106,7 @@ changeHealth :-
         !, describeHealthChange.
 changeHealth.
 
-/* These rules describe how to pick up an object. */
+% Zasady określające podnoszenie obiektów
 
 take(X) :-
         i_am_at(Place),
@@ -128,7 +121,7 @@ take(_) :-
         nl.
 
 
-/* These rules describe how to put down an object. */
+% zasady określające wygraną gry: podróż na księżyc
 teleportMoon :-
         i_am_at(Here),
         retract(i_am_at(Here)),
@@ -145,7 +138,7 @@ goToMoon :-
         write('Zbierz wszystkie elementy (portalOne, portalTwo, portalThree) aby polecieć na księżyc').
 
 
-/* These rules define the direction letters as calls to go/1. */
+/* definicja kierunków podróży. */
 
 n :- go(n).
 
@@ -167,13 +160,12 @@ go(Direction) :-
         assert(lastDirection(Direction)),
         !, makeAttack, look, changeHealth.
 
-% teleport(Place)
 
 go(_) :-
         write('You cant go that way.').
 
 
-/* This rule tells how to look about you. */
+/* metody do rozglądania się. */
 
 look :-
         i_am_at(Place),
@@ -187,9 +179,6 @@ search :-
         notice_objects_at(Place),
         nl.
 
-/* These rules set up a loop to mention all the objects
-   in your vicinity. */
-
 notice_objects_at(Place) :-
         at(X, Place),
         write('Jest tu '), write(X), nl,
@@ -197,7 +186,7 @@ notice_objects_at(Place) :-
 
 notice_objects_at(_).
 
-
+% metody związane z grą
 die :-
         halt.
 
